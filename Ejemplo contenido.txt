@@ -1,0 +1,102 @@
+<div style="background-color:#f7f7f9; padding:14px; border:1px solid #e5e7eb; border-radius:12px; font-family:Segoe UI, Arial, sans-serif; color:#111827;">
+  <div style="background-color:#ffffff; padding:12px; border:1px solid #e5e7eb; border-radius:10px;">
+    <div style="font-size:12px; color:#6b7280; letter-spacing:0.02em;">CURSO</div>
+    <div style="font-size:18px; font-weight:700; color:#111827; margin-top:2px;">
+      Seguridad en Planta – Nivel Operario
+    </div>
+  </div>
+
+  <div style="height:10px;"></div>
+
+  <!-- Lección 1 -->
+  <div style="background-color:#ffffff; padding:12px; border:1px solid #e5e7eb; border-radius:10px;">
+    <div style="font-size:15px; font-weight:700; color:#111827; margin-bottom:8px;">
+      Lección 1 – Introducción a la seguridad
+    </div>
+    <ul style="margin:0; padding-left:18px; color:#111827;">
+      <li style="margin:6px 0;">
+        Video:
+        <a href="https://contoso.sharepoint.com/sites/cursos/Videos/intro-seguridad.mp4"
+           target="_blank" rel="noopener noreferrer"
+           style="color:#2563eb; text-decoration:none; font-weight:600;">
+          Abrir
+        </a>
+      </li>
+      <li style="margin:6px 0;">
+        PDF:
+        <a href="https://contoso.sharepoint.com/sites/cursos/Docs/intro-seguridad.pdf"
+           target="_blank" rel="noopener noreferrer"
+           style="color:#2563eb; text-decoration:none; font-weight:600;">
+          Abrir
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div style="height:10px;"></div>
+
+  <!-- Lección 2 -->
+  <div style="background-color:#ffffff; padding:12px; border:1px solid #e5e7eb; border-radius:10px;">
+    <div style="font-size:15px; font-weight:700; color:#111827; margin-bottom:8px;">
+      Lección 2 – Uso correcto de maquinaria
+    </div>
+    <ul style="margin:0; padding-left:18px; color:#111827;">
+      <li style="margin:6px 0;">
+        Documento:
+        <a href="https://contoso.sharepoint.com/sites/cursos/Docs/uso-maquinaria.docx"
+           target="_blank" rel="noopener noreferrer"
+           style="color:#2563eb; text-decoration:none; font-weight:600;">
+          Abrir
+        </a>
+      </li>
+      <li style="margin:6px 0;">
+        Video:
+        <a href="https://contoso.sharepoint.com/sites/cursos/Videos/uso-maquinaria.mp4"
+           target="_blank" rel="noopener noreferrer"
+           style="color:#2563eb; text-decoration:none; font-weight:600;">
+          Abrir
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div style="height:10px;"></div>
+
+  <!-- Lección 3 -->
+  <div style="background-color:#ffffff; padding:12px; border:1px solid #e5e7eb; border-radius:10px;">
+    <div style="font-size:15px; font-weight:700; color:#111827; margin-bottom:8px;">
+      Lección 3 – Procedimientos de emergencia
+    </div>
+    <ul style="margin:0; padding-left:18px; color:#111827;">
+      <li style="margin:6px 0;">
+        PDF:
+        <a href="https://contoso.sharepoint.com/sites/cursos/Docs/emergencias.pdf"
+           target="_blank" rel="noopener noreferrer"
+           style="color:#2563eb; text-decoration:none; font-weight:600;">
+          Abrir
+        </a>
+      </li>
+      <li style="margin:6px 0;">
+        Infografía:
+        <a href="https://contoso.sharepoint.com/sites/cursos/Imgs/emergencias.png"
+           target="_blank" rel="noopener noreferrer"
+           style="color:#2563eb; text-decoration:none; font-weight:600;">
+          Abrir
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div style="height:10px;"></div>
+
+  <!-- Observaciones -->
+  <div style="background-color:#ffffff; padding:12px; border:1px solid #e5e7eb; border-radius:10px;">
+    <div style="font-size:14px; font-weight:700; color:#111827; margin-bottom:8px;">
+      Observaciones
+    </div>
+    <ul style="margin:0; padding-left:18px; color:#111827;">
+      <li style="margin:6px 0;">Este curso es obligatorio para todo el personal de producción.</li>
+      <li style="margin:6px 0;">Aplica normativa ISO 45001.</li>
+    </ul>
+  </div>
+</div>
