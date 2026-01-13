@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/tile-formatting.schema.json",
-  "height": 270,
-  "width": 340,
+  "height": 360,
+  "width": 360,
   "hideSelection": true,
   "fillHorizontally": true,
   "formatter": {
@@ -20,14 +20,16 @@
           "border-radius": "16px",
           "box-shadow": "0 6px 18px rgba(0,0,0,0.08)",
           "background-color": "white",
-          "overflow": "hidden"
+          "overflow": "hidden",
+          "display": "flex",
+          "flex-direction": "column"
         },
         "children": [
           {
             "elmType": "div",
             "style": {
               "height": "6px",
-              "background-color": "=if([$Medio_x0020_Ambiente]==true,'#0078D4', if([$Proteccion_x0020_Maquina]==true,'#107C10','#605E5C'))"
+              "background-color": "=if([$Peligro_x0020_f_x00ec_sico]==true || [$Safety_x0020_Map]==true || [$Medio_x0020_Ambiente]==true || [$Proteccion_x0020_Maquina]==true || [$Perdida_x0020_Ergonomica]==true || [$Afecta_x0020_Material]==true || [$Afecta_x0020_Producto]==true || [$Relacioado_x0020_Calidad]==true || [$Relacionada_x0020_Limpieza]==true || [$Altera_x0020_Caracteristicas]==true || [$Relacionado_x0020_con_x0020_Requ]==true, '#0078D4', '#605E5C')"
             }
           },
           {
@@ -48,176 +50,544 @@
                   "overflow": "hidden",
                   "display": "-webkit-box",
                   "-webkit-box-orient": "vertical",
-                  "-webkit-line-clamp": "2"
+                  "-webkit-line-clamp": "3"
                 },
-                "txtContent": "[$Title]"
+                "txtContent": "=if([$Title]=='','(Sin título)',[$Title])"
               },
 
               {
                 "elmType": "div",
-                "style": { "display": "flex", "flex-wrap": "wrap", "gap": "8px" },
+                "style": {
+                  "font-size": "12px",
+                  "color": "#605E5C",
+                  "font-weight": "600"
+                },
+                "txtContent": "Clasificación (click para activar/desactivar)"
+              },
+
+              {
+                "elmType": "div",
+                "style": {
+                  "display": "flex",
+                  "flex-wrap": "wrap",
+                  "gap": "8px"
+                },
                 "children": [
+                  /* 1) Peligro físico */
                   {
-                    "elmType": "div",
+                    "elmType": "button",
                     "style": {
-                      "display": "=if([$Medio_x0020_Ambiente]==true,'flex','none')",
+                      "display": "=if([$Peligro_x0020_f_x00ec_sico]==true,'inline-flex','none')",
                       "align-items": "center",
                       "gap": "6px",
-                      "padding": "4px 10px",
+                      "padding": "6px 10px",
                       "border-radius": "999px",
-                      "font-size": "12px",
-                      "font-weight": "600",
+                      "border": "1px solid #BBD7F0",
                       "background-color": "#E6F2FF",
-                      "border": "1px solid #BBD7F0"
+                      "cursor": "pointer",
+                      "font-size": "12px",
+                      "font-weight": "650"
                     },
                     "children": [
-                      { "elmType": "span", "txtContent": "🌿" },
-                      { "elmType": "span", "txtContent": "Medio Ambiente" }
-                    ]
+                      { "elmType": "span", "txtContent": "✓" },
+                      { "elmType": "span", "txtContent": "Peligro físico" }
+                    ],
+                    "customRowAction": {
+                      "action": "setValue",
+                      "actionInput": { "Peligro_x0020_f_x00ec_sico": false }
+                    }
                   },
                   {
-                    "elmType": "div",
+                    "elmType": "button",
                     "style": {
-                      "display": "=if([$Proteccion_x0020_Maquina]==true,'flex','none')",
+                      "display": "=if([$Peligro_x0020_f_x00ec_sico]==true,'none','inline-flex')",
                       "align-items": "center",
                       "gap": "6px",
-                      "padding": "4px 10px",
+                      "padding": "6px 10px",
                       "border-radius": "999px",
-                      "font-size": "12px",
-                      "font-weight": "600",
-                      "background-color": "#E6FFED",
-                      "border": "1px solid #B7E3C0"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "🛡️" },
-                      { "elmType": "span", "txtContent": "Protección Máquina" }
-                    ]
-                  },
-                  {
-                    "elmType": "div",
-                    "style": {
-                      "display": "=if([$Medio_x0020_Ambiente]==true || [$Proteccion_x0020_Maquina]==true,'none','flex')",
-                      "align-items": "center",
-                      "gap": "6px",
-                      "padding": "4px 10px",
-                      "border-radius": "999px",
-                      "font-size": "12px",
-                      "font-weight": "600",
+                      "border": "1px solid #E1DFDD",
                       "background-color": "#F3F2F1",
-                      "border": "1px solid #E1DFDD"
+                      "cursor": "pointer",
+                      "font-size": "12px",
+                      "font-weight": "650"
                     },
                     "children": [
-                      { "elmType": "span", "txtContent": "ℹ️" },
-                      { "elmType": "span", "txtContent": "Sin clasificación" }
-                    ]
-                  }
-                ]
-              },
-
-              {
-                "elmType": "div",
-                "style": { "display": "flex", "flex-direction": "column", "gap": "8px" },
-                "children": [
-                  {
-                    "elmType": "div",
-                    "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "600" },
-                    "txtContent": "Clasificación (click para cambiar)"
+                      { "elmType": "span", "txtContent": "Peligro físico" }
+                    ],
+                    "customRowAction": {
+                      "action": "setValue",
+                      "actionInput": { "Peligro_x0020_f_x00ec_sico": true }
+                    }
                   },
 
+                  /* 2) Safety Map */
                   {
-                    "elmType": "div",
-                    "style": { "display": "flex", "gap": "10px", "flex-wrap": "wrap" },
+                    "elmType": "button",
+                    "style": {
+                      "display": "=if([$Safety_x0020_Map]==true,'inline-flex','none')",
+                      "align-items": "center",
+                      "gap": "6px",
+                      "padding": "6px 10px",
+                      "border-radius": "999px",
+                      "border": "1px solid #BBD7F0",
+                      "background-color": "#E6F2FF",
+                      "cursor": "pointer",
+                      "font-size": "12px",
+                      "font-weight": "650"
+                    },
                     "children": [
-                      {
-                        "elmType": "button",
-                        "style": {
-                          "display": "=if([$Medio_x0020_Ambiente]==true,'inline-flex','none')",
-                          "align-items": "center",
-                          "gap": "8px",
-                          "padding": "8px 10px",
-                          "border-radius": "12px",
-                          "border": "1px solid #BBD7F0",
-                          "background-color": "#E6F2FF",
-                          "cursor": "pointer",
-                          "font-weight": "650"
-                        },
-                        "children": [
-                          { "elmType": "span", "txtContent": "🌿" },
-                          { "elmType": "span", "txtContent": "Medio Ambiente: Sí" }
-                        ],
-                        "customRowAction": {
-                          "action": "setValue",
-                          "actionInput": { "Medio_x0020_Ambiente": false }
-                        }
-                      },
-                      {
-                        "elmType": "button",
-                        "style": {
-                          "display": "=if([$Medio_x0020_Ambiente]==true,'none','inline-flex')",
-                          "align-items": "center",
-                          "gap": "8px",
-                          "padding": "8px 10px",
-                          "border-radius": "12px",
-                          "border": "1px solid #E1DFDD",
-                          "background-color": "#F3F2F1",
-                          "cursor": "pointer",
-                          "font-weight": "650"
-                        },
-                        "children": [
-                          { "elmType": "span", "txtContent": "🌿" },
-                          { "elmType": "span", "txtContent": "Medio Ambiente: No" }
-                        ],
-                        "customRowAction": {
-                          "action": "setValue",
-                          "actionInput": { "Medio_x0020_Ambiente": true }
-                        }
-                      },
+                      { "elmType": "span", "txtContent": "✓" },
+                      { "elmType": "span", "txtContent": "Safety Map" }
+                    ],
+                    "customRowAction": {
+                      "action": "setValue",
+                      "actionInput": { "Safety_x0020_Map": false }
+                    }
+                  },
+                  {
+                    "elmType": "button",
+                    "style": {
+                      "display": "=if([$Safety_x0020_Map]==true,'none','inline-flex')",
+                      "align-items": "center",
+                      "gap": "6px",
+                      "padding": "6px 10px",
+                      "border-radius": "999px",
+                      "border": "1px solid #E1DFDD",
+                      "background-color": "#F3F2F1",
+                      "cursor": "pointer",
+                      "font-size": "12px",
+                      "font-weight": "650"
+                    },
+                    "children": [
+                      { "elmType": "span", "txtContent": "Safety Map" }
+                    ],
+                    "customRowAction": {
+                      "action": "setValue",
+                      "actionInput": { "Safety_x0020_Map": true }
+                    }
+                  },
 
-                      {
-                        "elmType": "button",
-                        "style": {
-                          "display": "=if([$Proteccion_x0020_Maquina]==true,'inline-flex','none')",
-                          "align-items": "center",
-                          "gap": "8px",
-                          "padding": "8px 10px",
-                          "border-radius": "12px",
-                          "border": "1px solid #B7E3C0",
-                          "background-color": "#E6FFED",
-                          "cursor": "pointer",
-                          "font-weight": "650"
-                        },
-                        "children": [
-                          { "elmType": "span", "txtContent": "🛡️" },
-                          { "elmType": "span", "txtContent": "Protección Máquina: Sí" }
-                        ],
-                        "customRowAction": {
-                          "action": "setValue",
-                          "actionInput": { "Proteccion_x0020_Maquina": false }
-                        }
-                      },
-                      {
-                        "elmType": "button",
-                        "style": {
-                          "display": "=if([$Proteccion_x0020_Maquina]==true,'none','inline-flex')",
-                          "align-items": "center",
-                          "gap": "8px",
-                          "padding": "8px 10px",
-                          "border-radius": "12px",
-                          "border": "1px solid #E1DFDD",
-                          "background-color": "#F3F2F1",
-                          "cursor": "pointer",
-                          "font-weight": "650"
-                        },
-                        "children": [
-                          { "elmType": "span", "txtContent": "🛡️" },
-                          { "elmType": "span", "txtContent": "Protección Máquina: No" }
-                        ],
-                        "customRowAction": {
-                          "action": "setValue",
-                          "actionInput": { "Proteccion_x0020_Maquina": true }
-                        }
-                      }
-                    ]
+                  /* 3) Medio Ambiente */
+                  {
+                    "elmType": "button",
+                    "style": {
+                      "display": "=if([$Medio_x0020_Ambiente]==true,'inline-flex','none')",
+                      "align-items": "center",
+                      "gap": "6px",
+                      "padding": "6px 10px",
+                      "border-radius": "999px",
+                      "border": "1px solid #BBD7F0",
+                      "background-color": "#E6F2FF",
+                      "cursor": "pointer",
+                      "font-size": "12px",
+                      "font-weight": "650"
+                    },
+                    "children": [
+                      { "elmType": "span", "txtContent": "✓" },
+                      { "elmType": "span", "txtContent": "Medio Ambiente" }
+                    ],
+                    "customRowAction": {
+                      "action": "setValue",
+                      "actionInput": { "Medio_x0020_Ambiente": false }
+                    }
+                  },
+                  {
+                    "elmType": "button",
+                    "style": {
+                      "display": "=if([$Medio_x0020_Ambiente]==true,'none','inline-flex')",
+                      "align-items": "center",
+                      "gap": "6px",
+                      "padding": "6px 10px",
+                      "border-radius": "999px",
+                      "border": "1px solid #E1DFDD",
+                      "background-color": "#F3F2F1",
+                      "cursor": "pointer",
+                      "font-size": "12px",
+                      "font-weight": "650"
+                    },
+                    "children": [
+                      { "elmType": "span", "txtContent": "Medio Ambiente" }
+                    ],
+                    "customRowAction": {
+                      "action": "setValue",
+                      "actionInput": { "Medio_x0020_Ambiente": true }
+                    }
+                  },
+
+                  /* 4) Protección Máquina */
+                  {
+                    "elmType": "button",
+                    "style": {
+                      "display": "=if([$Proteccion_x0020_Maquina]==true,'inline-flex','none')",
+                      "align-items": "center",
+                      "gap": "6px",
+                      "padding": "6px 10px",
+                      "border-radius": "999px",
+                      "border": "1px solid #BBD7F0",
+                      "background-color": "#E6F2FF",
+                      "cursor": "pointer",
+                      "font-size": "12px",
+                      "font-weight": "650"
+                    },
+                    "children": [
+                      { "elmType": "span", "txtContent": "✓" },
+                      { "elmType": "span", "txtContent": "Protección Máquina" }
+                    ],
+                    "customRowAction": {
+                      "action": "setValue",
+                      "actionInput": { "Proteccion_x0020_Maquina": false }
+                    }
+                  },
+                  {
+                    "elmType": "button",
+                    "style": {
+                      "display": "=if([$Proteccion_x0020_Maquina]==true,'none','inline-flex')",
+                      "align-items": "center",
+                      "gap": "6px",
+                      "padding": "6px 10px",
+                      "border-radius": "999px",
+                      "border": "1px solid #E1DFDD",
+                      "background-color": "#F3F2F1",
+                      "cursor": "pointer",
+                      "font-size": "12px",
+                      "font-weight": "650"
+                    },
+                    "children": [
+                      { "elmType": "span", "txtContent": "Protección Máquina" }
+                    ],
+                    "customRowAction": {
+                      "action": "setValue",
+                      "actionInput": { "Proteccion_x0020_Maquina": true }
+                    }
+                  },
+
+                  /* 5) Pérdida Ergonomica */
+                  {
+                    "elmType": "button",
+                    "style": {
+                      "display": "=if([$Perdida_x0020_Ergonomica]==true,'inline-flex','none')",
+                      "align-items": "center",
+                      "gap": "6px",
+                      "padding": "6px 10px",
+                      "border-radius": "999px",
+                      "border": "1px solid #BBD7F0",
+                      "background-color": "#E6F2FF",
+                      "cursor": "pointer",
+                      "font-size": "12px",
+                      "font-weight": "650"
+                    },
+                    "children": [
+                      { "elmType": "span", "txtContent": "✓" },
+                      { "elmType": "span", "txtContent": "Pérdida Ergonómica" }
+                    ],
+                    "customRowAction": {
+                      "action": "setValue",
+                      "actionInput": { "Perdida_x0020_Ergonomica": false }
+                    }
+                  },
+                  {
+                    "elmType": "button",
+                    "style": {
+                      "display": "=if([$Perdida_x0020_Ergonomica]==true,'none','inline-flex')",
+                      "align-items": "center",
+                      "gap": "6px",
+                      "padding": "6px 10px",
+                      "border-radius": "999px",
+                      "border": "1px solid #E1DFDD",
+                      "background-color": "#F3F2F1",
+                      "cursor": "pointer",
+                      "font-size": "12px",
+                      "font-weight": "650"
+                    },
+                    "children": [
+                      { "elmType": "span", "txtContent": "Pérdida Ergonómica" }
+                    ],
+                    "customRowAction": {
+                      "action": "setValue",
+                      "actionInput": { "Perdida_x0020_Ergonomica": true }
+                    }
+                  },
+
+                  /* 6) Afecta Material */
+                  {
+                    "elmType": "button",
+                    "style": {
+                      "display": "=if([$Afecta_x0020_Material]==true,'inline-flex','none')",
+                      "align-items": "center",
+                      "gap": "6px",
+                      "padding": "6px 10px",
+                      "border-radius": "999px",
+                      "border": "1px solid #BBD7F0",
+                      "background-color": "#E6F2FF",
+                      "cursor": "pointer",
+                      "font-size": "12px",
+                      "font-weight": "650"
+                    },
+                    "children": [
+                      { "elmType": "span", "txtContent": "✓" },
+                      { "elmType": "span", "txtContent": "Afecta Material" }
+                    ],
+                    "customRowAction": {
+                      "action": "setValue",
+                      "actionInput": { "Afecta_x0020_Material": false }
+                    }
+                  },
+                  {
+                    "elmType": "button",
+                    "style": {
+                      "display": "=if([$Afecta_x0020_Material]==true,'none','inline-flex')",
+                      "align-items": "center",
+                      "gap": "6px",
+                      "padding": "6px 10px",
+                      "border-radius": "999px",
+                      "border": "1px solid #E1DFDD",
+                      "background-color": "#F3F2F1",
+                      "cursor": "pointer",
+                      "font-size": "12px",
+                      "font-weight": "650"
+                    },
+                    "children": [
+                      { "elmType": "span", "txtContent": "Afecta Material" }
+                    ],
+                    "customRowAction": {
+                      "action": "setValue",
+                      "actionInput": { "Afecta_x0020_Material": true }
+                    }
+                  },
+
+                  /* 7) Afecta Producto */
+                  {
+                    "elmType": "button",
+                    "style": {
+                      "display": "=if([$Afecta_x0020_Producto]==true,'inline-flex','none')",
+                      "align-items": "center",
+                      "gap": "6px",
+                      "padding": "6px 10px",
+                      "border-radius": "999px",
+                      "border": "1px solid #BBD7F0",
+                      "background-color": "#E6F2FF",
+                      "cursor": "pointer",
+                      "font-size": "12px",
+                      "font-weight": "650"
+                    },
+                    "children": [
+                      { "elmType": "span", "txtContent": "✓" },
+                      { "elmType": "span", "txtContent": "Afecta Producto" }
+                    ],
+                    "customRowAction": {
+                      "action": "setValue",
+                      "actionInput": { "Afecta_x0020_Producto": false }
+                    }
+                  },
+                  {
+                    "elmType": "button",
+                    "style": {
+                      "display": "=if([$Afecta_x0020_Producto]==true,'none','inline-flex')",
+                      "align-items": "center",
+                      "gap": "6px",
+                      "padding": "6px 10px",
+                      "border-radius": "999px",
+                      "border": "1px solid #E1DFDD",
+                      "background-color": "#F3F2F1",
+                      "cursor": "pointer",
+                      "font-size": "12px",
+                      "font-weight": "650"
+                    },
+                    "children": [
+                      { "elmType": "span", "txtContent": "Afecta Producto" }
+                    ],
+                    "customRowAction": {
+                      "action": "setValue",
+                      "actionInput": { "Afecta_x0020_Producto": true }
+                    }
+                  },
+
+                  /* 8) Relacionado Calidad */
+                  {
+                    "elmType": "button",
+                    "style": {
+                      "display": "=if([$Relacioado_x0020_Calidad]==true,'inline-flex','none')",
+                      "align-items": "center",
+                      "gap": "6px",
+                      "padding": "6px 10px",
+                      "border-radius": "999px",
+                      "border": "1px solid #BBD7F0",
+                      "background-color": "#E6F2FF",
+                      "cursor": "pointer",
+                      "font-size": "12px",
+                      "font-weight": "650"
+                    },
+                    "children": [
+                      { "elmType": "span", "txtContent": "✓" },
+                      { "elmType": "span", "txtContent": "Relacionado Calidad" }
+                    ],
+                    "customRowAction": {
+                      "action": "setValue",
+                      "actionInput": { "Relacioado_x0020_Calidad": false }
+                    }
+                  },
+                  {
+                    "elmType": "button",
+                    "style": {
+                      "display": "=if([$Relacioado_x0020_Calidad]==true,'none','inline-flex')",
+                      "align-items": "center",
+                      "gap": "6px",
+                      "padding": "6px 10px",
+                      "border-radius": "999px",
+                      "border": "1px solid #E1DFDD",
+                      "background-color": "#F3F2F1",
+                      "cursor": "pointer",
+                      "font-size": "12px",
+                      "font-weight": "650"
+                    },
+                    "children": [
+                      { "elmType": "span", "txtContent": "Relacionado Calidad" }
+                    ],
+                    "customRowAction": {
+                      "action": "setValue",
+                      "actionInput": { "Relacioado_x0020_Calidad": true }
+                    }
+                  },
+
+                  /* 9) Relacionada Limpieza */
+                  {
+                    "elmType": "button",
+                    "style": {
+                      "display": "=if([$Relacionada_x0020_Limpieza]==true,'inline-flex','none')",
+                      "align-items": "center",
+                      "gap": "6px",
+                      "padding": "6px 10px",
+                      "border-radius": "999px",
+                      "border": "1px solid #BBD7F0",
+                      "background-color": "#E6F2FF",
+                      "cursor": "pointer",
+                      "font-size": "12px",
+                      "font-weight": "650"
+                    },
+                    "children": [
+                      { "elmType": "span", "txtContent": "✓" },
+                      { "elmType": "span", "txtContent": "Relacionada Limpieza" }
+                    ],
+                    "customRowAction": {
+                      "action": "setValue",
+                      "actionInput": { "Relacionada_x0020_Limpieza": false }
+                    }
+                  },
+                  {
+                    "elmType": "button",
+                    "style": {
+                      "display": "=if([$Relacionada_x0020_Limpieza]==true,'none','inline-flex')",
+                      "align-items": "center",
+                      "gap": "6px",
+                      "padding": "6px 10px",
+                      "border-radius": "999px",
+                      "border": "1px solid #E1DFDD",
+                      "background-color": "#F3F2F1",
+                      "cursor": "pointer",
+                      "font-size": "12px",
+                      "font-weight": "650"
+                    },
+                    "children": [
+                      { "elmType": "span", "txtContent": "Relacionada Limpieza" }
+                    ],
+                    "customRowAction": {
+                      "action": "setValue",
+                      "actionInput": { "Relacionada_x0020_Limpieza": true }
+                    }
+                  },
+
+                  /* 10) Altera Características */
+                  {
+                    "elmType": "button",
+                    "style": {
+                      "display": "=if([$Altera_x0020_Caracteristicas]==true,'inline-flex','none')",
+                      "align-items": "center",
+                      "gap": "6px",
+                      "padding": "6px 10px",
+                      "border-radius": "999px",
+                      "border": "1px solid #BBD7F0",
+                      "background-color": "#E6F2FF",
+                      "cursor": "pointer",
+                      "font-size": "12px",
+                      "font-weight": "650"
+                    },
+                    "children": [
+                      { "elmType": "span", "txtContent": "✓" },
+                      { "elmType": "span", "txtContent": "Altera características" }
+                    ],
+                    "customRowAction": {
+                      "action": "setValue",
+                      "actionInput": { "Altera_x0020_Caracteristicas": false }
+                    }
+                  },
+                  {
+                    "elmType": "button",
+                    "style": {
+                      "display": "=if([$Altera_x0020_Caracteristicas]==true,'none','inline-flex')",
+                      "align-items": "center",
+                      "gap": "6px",
+                      "padding": "6px 10px",
+                      "border-radius": "999px",
+                      "border": "1px solid #E1DFDD",
+                      "background-color": "#F3F2F1",
+                      "cursor": "pointer",
+                      "font-size": "12px",
+                      "font-weight": "650"
+                    },
+                    "children": [
+                      { "elmType": "span", "txtContent": "Altera características" }
+                    ],
+                    "customRowAction": {
+                      "action": "setValue",
+                      "actionInput": { "Altera_x0020_Caracteristicas": true }
+                    }
+                  },
+
+                  /* 11) Relacionado con Requerimiento */
+                  {
+                    "elmType": "button",
+                    "style": {
+                      "display": "=if([$Relacionado_x0020_con_x0020_Requ]==true,'inline-flex','none')",
+                      "align-items": "center",
+                      "gap": "6px",
+                      "padding": "6px 10px",
+                      "border-radius": "999px",
+                      "border": "1px solid #BBD7F0",
+                      "background-color": "#E6F2FF",
+                      "cursor": "pointer",
+                      "font-size": "12px",
+                      "font-weight": "650"
+                    },
+                    "children": [
+                      { "elmType": "span", "txtContent": "✓" },
+                      { "elmType": "span", "txtContent": "Relacionado con requerimiento" }
+                    ],
+                    "customRowAction": {
+                      "action": "setValue",
+                      "actionInput": { "Relacionado_x0020_con_x0020_Requ": false }
+                    }
+                  },
+                  {
+                    "elmType": "button",
+                    "style": {
+                      "display": "=if([$Relacionado_x0020_con_x0020_Requ]==true,'none','inline-flex')",
+                      "align-items": "center",
+                      "gap": "6px",
+                      "padding": "6px 10px",
+                      "border-radius": "999px",
+                      "border": "1px solid #E1DFDD",
+                      "background-color": "#F3F2F1",
+                      "cursor": "pointer",
+                      "font-size": "12px",
+                      "font-weight": "650"
+                    },
+                    "children": [
+                      { "elmType": "span", "txtContent": "Relacionado con requerimiento" }
+                    ],
+                    "customRowAction": {
+                      "action": "setValue",
+                      "actionInput": { "Relacionado_x0020_con_x0020_Requ": true }
+                    }
                   }
                 ]
               },
