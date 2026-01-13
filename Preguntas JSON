@@ -1,0 +1,152 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/tile-formatting.schema.json",
+  "height": 240,
+  "width": 320,
+  "hideSelection": true,
+  "fillHorizontally": true,
+  "formatter": {
+    "elmType": "div",
+    "style": {
+      "padding": "10px"
+    },
+    "children": [
+      {
+        "elmType": "div",
+        "attributes": { "class": "sp-card-defaultClickButton" },
+        "customRowAction": { "action": "defaultClick" }
+      },
+      {
+        "elmType": "div",
+        "style": {
+          "border": "1px solid #E6E6E6",
+          "border-radius": "16px",
+          "box-shadow": "0 6px 18px rgba(0,0,0,0.08)",
+          "background-color": "white",
+          "overflow": "hidden"
+        },
+        "children": [
+          {
+            "elmType": "div",
+            "style": {
+              "height": "6px",
+              "background-color": "=if([$Medio_x0020_Ambiente]==true,'#0078D4', if([$Proteccion_x0020_Maquina]==true,'#107C10','#605E5C'))"
+            }
+          },
+          {
+            "elmType": "div",
+            "style": {
+              "padding": "12px",
+              "display": "flex",
+              "flex-direction": "column",
+              "gap": "10px"
+            },
+            "children": [
+              {
+                "elmType": "div",
+                "style": {
+                  "font-size": "16px",
+                  "font-weight": "700",
+                  "line-height": "1.25",
+                  "overflow": "hidden",
+                  "display": "-webkit-box",
+                  "-webkit-box-orient": "vertical",
+                  "-webkit-line-clamp": "2"
+                },
+                "txtContent": "=if([$Title]=='','(Sin título)',[$Title])"
+              },
+
+              {
+                "elmType": "div",
+                "style": {
+                  "display": "flex",
+                  "flex-wrap": "wrap",
+                  "gap": "8px"
+                },
+                "children": [
+                  {
+                    "elmType": "div",
+                    "style": {
+                      "display": "=if([$Medio_x0020_Ambiente]==true,'flex','none')",
+                      "align-items": "center",
+                      "gap": "6px",
+                      "padding": "4px 10px",
+                      "border-radius": "999px",
+                      "font-size": "12px",
+                      "font-weight": "600",
+                      "background-color": "#E6F2FF",
+                      "border": "1px solid #BBD7F0"
+                    },
+                    "children": [
+                      { "elmType": "span", "txtContent": "🌿" },
+                      { "elmType": "span", "txtContent": "Medio Ambiente" }
+                    ]
+                  },
+                  {
+                    "elmType": "div",
+                    "style": {
+                      "display": "=if([$Proteccion_x0020_Maquina]==true,'flex','none')",
+                      "align-items": "center",
+                      "gap": "6px",
+                      "padding": "4px 10px",
+                      "border-radius": "999px",
+                      "font-size": "12px",
+                      "font-weight": "600",
+                      "background-color": "#E6FFED",
+                      "border": "1px solid #B7E3C0"
+                    },
+                    "children": [
+                      { "elmType": "span", "txtContent": "🛡️" },
+                      { "elmType": "span", "txtContent": "Protección Máquina" }
+                    ]
+                  },
+                  {
+                    "elmType": "div",
+                    "style": {
+                      "display": "=if([$Medio_x0020_Ambiente]==true || [$Proteccion_x0020_Maquina]==true,'none','flex')",
+                      "align-items": "center",
+                      "gap": "6px",
+                      "padding": "4px 10px",
+                      "border-radius": "999px",
+                      "font-size": "12px",
+                      "font-weight": "600",
+                      "background-color": "#F3F2F1",
+                      "border": "1px solid #E1DFDD"
+                    },
+                    "children": [
+                      { "elmType": "span", "txtContent": "ℹ️" },
+                      { "elmType": "span", "txtContent": "Sin clasificación" }
+                    ]
+                  }
+                ]
+              },
+
+              {
+                "elmType": "div",
+                "style": {
+                  "display": "flex",
+                  "justify-content": "space-between",
+                  "align-items": "center",
+                  "gap": "10px",
+                  "padding-top": "6px",
+                  "border-top": "1px solid #F3F2F1",
+                  "font-size": "12px",
+                  "color": "#605E5C"
+                },
+                "children": [
+                  {
+                    "elmType": "div",
+                    "txtContent": "=concat('ID #', [$ID])"
+                  },
+                  {
+                    "elmType": "div",
+                    "txtContent": "=concat('Modif: ', toLocaleDateString([$Modified]))"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
