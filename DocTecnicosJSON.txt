@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/tile-formatting.schema.json",
-  "height": 200,
+  "height": 185,
   "width": 340,
   "hideSelection": true,
   "fillHorizontally": true,
@@ -54,45 +54,6 @@
               {
                 "elmType": "div",
                 "style": {
-                  "display": "flex",
-                  "justify-content": "space-between",
-                  "align-items": "center",
-                  "gap": "10px"
-                },
-                "children": [
-                  {
-                    "elmType": "div",
-                    "style": { "display": "flex", "gap": "6px", "align-items": "center" },
-                    "children": [
-                      {
-                        "elmType": "span",
-                        "style": { "font-size": "12px", "color": "#605E5C" },
-                        "txtContent": "Tipo:"
-                      },
-                      {
-                        "elmType": "span",
-                        "style": {
-                          "padding": "2px 10px",
-                          "border-radius": "999px",
-                          "border": "1px solid #E1DFDD",
-                          "background-color": "#F3F2F1",
-                          "font-size": "12px",
-                          "font-weight": "600",
-                          "color": "#111827",
-                          "max-width": "190px",
-                          "white-space": "nowrap",
-                          "overflow": "hidden",
-                          "text-overflow": "ellipsis"
-                        },
-                        "txtContent": "[$tipocontenido]"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "elmType": "div",
-                "style": {
                   "border": "1px solid #EFEFEF",
                   "border-radius": "12px",
                   "background-color": "#FAFAFA",
@@ -117,7 +78,7 @@
                       "text-overflow": "ellipsis",
                       "white-space": "nowrap"
                     },
-                    "txtContent": "[$material.lookupValue]"
+                    "txtContent": "=if([$material.lookupValue]=='' || [$material.lookupValue]==null,'–',[$material.lookupValue])"
                   }
                 ]
               },
