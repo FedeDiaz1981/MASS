@@ -1,0 +1,167 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/tile-formatting.schema.json",
+  "height": 190,
+  "width": 320,
+  "hideSelection": true,
+  "fillHorizontally": true,
+  "formatter": {
+    "elmType": "div",
+    "style": { "padding": "10px" },
+    "children": [
+      {
+        "elmType": "div",
+        "attributes": { "class": "sp-card-defaultClickButton" },
+        "customRowAction": { "action": "defaultClick" }
+      },
+      {
+        "elmType": "div",
+        "style": {
+          "border": "1px solid #E6E6E6",
+          "border-radius": "16px",
+          "box-shadow": "0 6px 18px rgba(0,0,0,0.08)",
+          "background-color": "white",
+          "overflow": "hidden",
+          "display": "flex",
+          "flex-direction": "column"
+        },
+        "children": [
+          {
+            "elmType": "div",
+            "style": { "height": "6px", "background-color": "#0078D4" }
+          },
+          {
+            "elmType": "div",
+            "style": {
+              "padding": "12px",
+              "display": "flex",
+              "flex-direction": "column",
+              "gap": "10px"
+            },
+            "children": [
+              {
+                "elmType": "div",
+                "style": {
+                  "font-size": "16px",
+                  "font-weight": "700",
+                  "line-height": "1.25",
+                  "overflow": "hidden",
+                  "display": "-webkit-box",
+                  "-webkit-box-orient": "vertical",
+                  "-webkit-line-clamp": "2"
+                },
+                "txtContent": "=if([$Title]=='','(Sin título)',[$Title])"
+              },
+              {
+                "elmType": "div",
+                "style": {
+                  "display": "flex",
+                  "justify-content": "space-between",
+                  "gap": "10px",
+                  "align-items": "center"
+                },
+                "children": [
+                  {
+                    "elmType": "div",
+                    "style": {
+                      "font-size": "12px",
+                      "color": "#605E5C",
+                      "white-space": "nowrap",
+                      "overflow": "hidden",
+                      "text-overflow": "ellipsis",
+                      "max-width": "210px"
+                    },
+                    "txtContent": "=concat('Tipo: ', if([$tipocontenido]=='','–',[$tipocontenido]))"
+                  },
+                  {
+                    "elmType": "div",
+                    "style": {
+                      "padding": "4px 10px",
+                      "border-radius": "999px",
+                      "font-size": "12px",
+                      "font-weight": "600",
+                      "border": "1px solid #E6E6E6",
+                      "background-color": "#F3F2F1"
+                    },
+                    "txtContent": "=if([$estado]=='','–',[$estado])"
+                  }
+                ]
+              },
+              {
+                "elmType": "div",
+                "style": {
+                  "border": "1px solid #EFEFEF",
+                  "border-radius": "12px",
+                  "background-color": "#FAFAFA",
+                  "padding": "10px",
+                  "font-size": "13px",
+                  "color": "#323130",
+                  "line-height": "1.35"
+                },
+                "children": [
+                  {
+                    "elmType": "div",
+                    "style": { "font-size": "12px", "color": "#605E5C", "margin-bottom": "6px" },
+                    "txtContent": "Material (lookup)"
+                  },
+                  {
+                    "elmType": "div",
+                    "style": {
+                      "font-weight": "600",
+                      "overflow": "hidden",
+                      "text-overflow": "ellipsis",
+                      "white-space": "nowrap"
+                    },
+                    "txtContent": "=if([$Material]=='','–',[$Material])"
+                  }
+                ]
+              },
+              {
+                "elmType": "a",
+                "attributes": {
+                  "href": "[$MaterialUrlMirror]",
+                  "target": "_blank",
+                  "class": "ms-fontColor-neutralPrimary"
+                },
+                "style": {
+                  "display": "=if([$MaterialUrlMirror]=='','none','inline-flex')",
+                  "align-items": "center",
+                  "justify-content": "center",
+                  "gap": "8px",
+                  "padding": "10px 12px",
+                  "border-radius": "12px",
+                  "border": "1px solid #BBD7F0",
+                  "background-color": "#E6F2FF",
+                  "cursor": "pointer",
+                  "font-size": "13px",
+                  "font-weight": "700",
+                  "text-decoration": "none"
+                },
+                "children": [
+                  { "elmType": "span", "txtContent": "🔗" },
+                  { "elmType": "span", "txtContent": "Abrir material" }
+                ]
+              },
+              {
+                "elmType": "div",
+                "style": {
+                  "display": "flex",
+                  "justify-content": "space-between",
+                  "align-items": "center",
+                  "gap": "10px",
+                  "padding-top": "6px",
+                  "border-top": "1px solid #F3F2F1",
+                  "font-size": "12px",
+                  "color": "#605E5C"
+                },
+                "children": [
+                  { "elmType": "div", "txtContent": "=concat('ID #', [$ID])" },
+                  { "elmType": "div", "txtContent": "=concat('Modif: ', toLocaleDateString([$Modified]))" }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
