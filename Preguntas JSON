@@ -54,7 +54,6 @@
                 },
                 "txtContent": "=if([$Title]=='','(Sin título)',[$Title])"
               },
-
               {
                 "elmType": "div",
                 "style": {
@@ -119,7 +118,6 @@
                   }
                 ]
               },
-
               {
                 "elmType": "div",
                 "style": {
@@ -135,11 +133,19 @@
                 "children": [
                   {
                     "elmType": "div",
-                    "txtContent": "=concat('ID #', [$ID])"
+                    "style": { "display": "flex", "gap": "6px", "align-items": "center" },
+                    "children": [
+                      { "elmType": "span", "txtContent": "ID #" },
+                      { "elmType": "span", "txtContent": "[$ID]" }
+                    ]
                   },
                   {
                     "elmType": "div",
-                    "txtContent": "=concat('Modif: ', toLocaleDateString([$Modified]))"
+                    "style": { "display": "flex", "gap": "6px", "align-items": "center" },
+                    "children": [
+                      { "elmType": "span", "txtContent": "Modif:" },
+                      { "elmType": "span", "txtContent": "[$Modified]" }
+                    ]
                   }
                 ]
               }
