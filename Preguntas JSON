@@ -590,7 +590,7 @@
                       "background-color": "#E6F2FF",
                       "font-weight": "650"
                     },
-                    "txtContent": "Ejecutar workflow",
+                    "txtContent": "Publicar",
                     "customRowAction": {
                       "action": "executeFlow",
                       "actionParams": "{\"id\":\"FLOW_ID_AQUI\"}"
