@@ -51,7 +51,6 @@
                 },
                 "txtContent": "[$Title]"
               },
-
               {
                 "elmType": "div",
                 "style": { "display": "flex", "gap": "8px", "align-items": "center" },
@@ -64,7 +63,6 @@
                   {
                     "elmType": "span",
                     "style": {
-                      "display": "=if([$tipodocumento]=='' || [$tipodocumento]==null,'none','inline-flex')",
                       "padding": "2px 10px",
                       "border-radius": "999px",
                       "border": "1px solid #E1DFDD",
@@ -78,24 +76,9 @@
                       "text-overflow": "ellipsis"
                     },
                     "txtContent": "[$tipodocumento]"
-                  },
-                  {
-                    "elmType": "span",
-                    "style": {
-                      "display": "=if([$tipodocumento]=='' || [$tipodocumento]==null,'inline-flex','none')",
-                      "padding": "2px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #E1DFDD",
-                      "background-color": "#F3F2F1",
-                      "font-size": "12px",
-                      "font-weight": "700",
-                      "color": "#A19F9D"
-                    },
-                    "txtContent": "–"
                   }
                 ]
               },
-
               {
                 "elmType": "div",
                 "style": {
