@@ -73,7 +73,6 @@
                   "gap": "8px"
                 },
                 "children": [
-                  /* 1) Peligro físico */
                   {
                     "elmType": "button",
                     "style": {
@@ -120,8 +119,7 @@
                     }
                   },
 
-                  /* 2) Safety Map */
-                  {
+                   {
                     "elmType": "button",
                     "style": {
                       "display": "=if([$Safety_x0020_Map]==true,'inline-flex','none')",
@@ -167,7 +165,6 @@
                     }
                   },
 
-                  /* 3) Medio Ambiente */
                   {
                     "elmType": "button",
                     "style": {
@@ -214,7 +211,6 @@
                     }
                   },
 
-                  /* 4) Protección Máquina */
                   {
                     "elmType": "button",
                     "style": {
@@ -261,7 +257,6 @@
                     }
                   },
 
-                  /* 5) Pérdida Ergonomica */
                   {
                     "elmType": "button",
                     "style": {
@@ -308,7 +303,6 @@
                     }
                   },
 
-                  /* 6) Afecta Material */
                   {
                     "elmType": "button",
                     "style": {
@@ -355,7 +349,6 @@
                     }
                   },
 
-                  /* 7) Afecta Producto */
                   {
                     "elmType": "button",
                     "style": {
@@ -402,7 +395,6 @@
                     }
                   },
 
-                  /* 8) Relacionado Calidad */
                   {
                     "elmType": "button",
                     "style": {
@@ -449,7 +441,6 @@
                     }
                   },
 
-                  /* 9) Relacionada Limpieza */
                   {
                     "elmType": "button",
                     "style": {
@@ -496,7 +487,6 @@
                     }
                   },
 
-                  /* 10) Altera Características */
                   {
                     "elmType": "button",
                     "style": {
@@ -543,7 +533,6 @@
                     }
                   },
 
-                  /* 11) Relacionado con Requerimiento */
                   {
                     "elmType": "button",
                     "style": {
