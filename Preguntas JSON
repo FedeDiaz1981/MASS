@@ -1,18 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/tile-formatting.schema.json",
-  "height": 360,
-  "width": 360,
+  "height": 320,
+  "width": 380,
   "hideSelection": true,
   "fillHorizontally": true,
   "formatter": {
     "elmType": "div",
     "style": { "padding": "10px" },
     "children": [
-      {
-        "elmType": "div",
-        "attributes": { "class": "sp-card-defaultClickButton" },
-        "customRowAction": { "action": "defaultClick" }
-      },
       {
         "elmType": "div",
         "style": {
@@ -50,7 +45,7 @@
                   "overflow": "hidden",
                   "display": "-webkit-box",
                   "-webkit-box-orient": "vertical",
-                  "-webkit-line-clamp": "3"
+                  "-webkit-line-clamp": "2"
                 },
                 "txtContent": "=if([$Title]=='','(Sin título)',[$Title])"
               },
@@ -58,525 +53,113 @@
               {
                 "elmType": "div",
                 "style": {
-                  "font-size": "12px",
-                  "color": "#605E5C",
-                  "font-weight": "600"
-                },
-                "txtContent": "Clasificación (click para activar/desactivar)"
-              },
-
-              {
-                "elmType": "div",
-                "style": {
-                  "display": "flex",
-                  "flex-wrap": "wrap",
-                  "gap": "8px"
+                  "max-height": "190px",
+                  "overflow": "auto",
+                  "padding-right": "4px"
                 },
                 "children": [
                   {
-                    "elmType": "button",
+                    "elmType": "div",
                     "style": {
-                      "display": "=if([$Peligro_x0020_f_x00ec_sico]==true,'inline-flex','none')",
-                      "align-items": "center",
-                      "gap": "6px",
-                      "padding": "6px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #BBD7F0",
-                      "background-color": "#E6F2FF",
-                      "cursor": "pointer",
-                      "font-size": "12px",
-                      "font-weight": "650"
+                      "display": "flex",
+                      "flex-wrap": "wrap",
+                      "gap": "8px"
                     },
                     "children": [
-                      { "elmType": "span", "txtContent": "✓" },
-                      { "elmType": "span", "txtContent": "¿La pérdida tiene vínculo con algún peligro físico o de seguridad?" }
-                    ],
-                    "customRowAction": {
-                      "action": "setValue",
-                      "actionInput": { "Peligro_x0020_f_x00ec_sico": false }
-                    }
-                  },
-                  {
-                    "elmType": "button",
-                    "style": {
-                      "display": "=if([$Peligro_x0020_f_x00ec_sico]==true,'none','inline-flex')",
-                      "align-items": "center",
-                      "gap": "6px",
-                      "padding": "6px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #E1DFDD",
-                      "background-color": "#F3F2F1",
-                      "cursor": "pointer",
-                      "font-size": "12px",
-                      "font-weight": "650"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "¿La pérdida tiene vínculo con algún peligro físico o de seguridad?" }
-                    ],
-                    "customRowAction": {
-                      "action": "setValue",
-                      "actionInput": { "Peligro_x0020_f_x00ec_sico": true }
-                    }
-                  },
+                      {
+                        "elmType": "button",
+                        "style": {
+                          "display": "=if([$Peligro_x0020_f_x00ec_sico]==true,'inline-flex','none')",
+                          "align-items": "center",
+                          "gap": "6px",
+                          "padding": "6px 10px",
+                          "border-radius": "999px",
+                          "border": "1px solid #BBD7F0",
+                          "background-color": "#E6F2FF",
+                          "cursor": "pointer",
+                          "font-size": "12px",
+                          "font-weight": "650"
+                        },
+                        "children": [
+                          { "elmType": "span", "txtContent": "✓" },
+                          { "elmType": "span", "txtContent": "¿La pérdida tiene vínculo con algún peligro físico o de seguridad?" }
+                        ],
+                        "customRowAction": {
+                          "action": "setValue",
+                          "actionInput": { "Peligro_x0020_f_x00ec_sico": false }
+                        }
+                      },
+                      {
+                        "elmType": "button",
+                        "style": {
+                          "display": "=if([$Peligro_x0020_f_x00ec_sico]==true,'none','inline-flex')",
+                          "align-items": "center",
+                          "gap": "6px",
+                          "padding": "6px 10px",
+                          "border-radius": "999px",
+                          "border": "1px solid #E1DFDD",
+                          "background-color": "#F3F2F1",
+                          "cursor": "pointer",
+                          "font-size": "12px",
+                          "font-weight": "650"
+                        },
+                        "children": [
+                          { "elmType": "span", "txtContent": "¿La pérdida tiene vínculo con algún peligro físico o de seguridad?" }
+                        ],
+                        "customRowAction": {
+                          "action": "setValue",
+                          "actionInput": { "Peligro_x0020_f_x00ec_sico": true }
+                        }
+                      },
 
-                   {
-                    "elmType": "button",
-                    "style": {
-                      "display": "=if([$Safety_x0020_Map]==true,'inline-flex','none')",
-                      "align-items": "center",
-                      "gap": "6px",
-                      "padding": "6px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #BBD7F0",
-                      "background-color": "#E6F2FF",
-                      "cursor": "pointer",
-                      "font-size": "12px",
-                      "font-weight": "650"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "✓" },
-                      { "elmType": "span", "txtContent": "¿Algún impacto relacionado con el Safety Map?" }
-                    ],
-                    "customRowAction": {
-                      "action": "setValue",
-                      "actionInput": { "Safety_x0020_Map": false }
-                    }
-                  },
-                  {
-                    "elmType": "button",
-                    "style": {
-                      "display": "=if([$Safety_x0020_Map]==true,'none','inline-flex')",
-                      "align-items": "center",
-                      "gap": "6px",
-                      "padding": "6px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #E1DFDD",
-                      "background-color": "#F3F2F1",
-                      "cursor": "pointer",
-                      "font-size": "12px",
-                      "font-weight": "650"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "¿Algún impacto relacionado con el Safety Map?" }
-                    ],
-                    "customRowAction": {
-                      "action": "setValue",
-                      "actionInput": { "Safety_x0020_Map": true }
-                    }
-                  },
+                      {
+                        "elmType": "button",
+                        "style": {
+                          "display": "=if([$Safety_x0020_Map]==true,'inline-flex','none')",
+                          "align-items": "center",
+                          "gap": "6px",
+                          "padding": "6px 10px",
+                          "border-radius": "999px",
+                          "border": "1px solid #BBD7F0",
+                          "background-color": "#E6F2FF",
+                          "cursor": "pointer",
+                          "font-size": "12px",
+                          "font-weight": "650"
+                        },
+                        "children": [
+                          { "elmType": "span", "txtContent": "✓" },
+                          { "elmType": "span", "txtContent": "¿Algún impacto relacionado con el Safety Map?" }
+                        ],
+                        "customRowAction": {
+                          "action": "setValue",
+                          "actionInput": { "Safety_x0020_Map": false }
+                        }
+                      },
+                      {
+                        "elmType": "button",
+                        "style": {
+                          "display": "=if([$Safety_x0020_Map]==true,'none','inline-flex')",
+                          "align-items": "center",
+                          "gap": "6px",
+                          "padding": "6px 10px",
+                          "border-radius": "999px",
+                          "border": "1px solid #E1DFDD",
+                          "background-color": "#F3F2F1",
+                          "cursor": "pointer",
+                          "font-size": "12px",
+                          "font-weight": "650"
+                        },
+                        "children": [
+                          { "elmType": "span", "txtContent": "¿Algún impacto relacionado con el Safety Map?" }
+                        ],
+                        "customRowAction": {
+                          "action": "setValue",
+                          "actionInput": { "Safety_x0020_Map": true }
+                        }
+                      }
 
-                  {
-                    "elmType": "button",
-                    "style": {
-                      "display": "=if([$Medio_x0020_Ambiente]==true,'inline-flex','none')",
-                      "align-items": "center",
-                      "gap": "6px",
-                      "padding": "6px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #BBD7F0",
-                      "background-color": "#E6F2FF",
-                      "cursor": "pointer",
-                      "font-size": "12px",
-                      "font-weight": "650"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "✓" },
-                      { "elmType": "span", "txtContent": "¿Existe algún impacto al medio ambiente?" }
-                    ],
-                    "customRowAction": {
-                      "action": "setValue",
-                      "actionInput": { "Medio_x0020_Ambiente": false }
-                    }
-                  },
-                  {
-                    "elmType": "button",
-                    "style": {
-                      "display": "=if([$Medio_x0020_Ambiente]==true,'none','inline-flex')",
-                      "align-items": "center",
-                      "gap": "6px",
-                      "padding": "6px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #E1DFDD",
-                      "background-color": "#F3F2F1",
-                      "cursor": "pointer",
-                      "font-size": "12px",
-                      "font-weight": "650"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "¿Existe algún impacto al medio ambiente?" }
-                    ],
-                    "customRowAction": {
-                      "action": "setValue",
-                      "actionInput": { "Medio_x0020_Ambiente": true }
-                    }
-                  },
-
-                  {
-                    "elmType": "button",
-                    "style": {
-                      "display": "=if([$Proteccion_x0020_Maquina]==true,'inline-flex','none')",
-                      "align-items": "center",
-                      "gap": "6px",
-                      "padding": "6px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #BBD7F0",
-                      "background-color": "#E6F2FF",
-                      "cursor": "pointer",
-                      "font-size": "12px",
-                      "font-weight": "650"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "✓" },
-                      { "elmType": "span", "txtContent": "¿La pérdida está relacionada con algún tipo de protección de la máquina/equipo?" }
-                    ],
-                    "customRowAction": {
-                      "action": "setValue",
-                      "actionInput": { "Proteccion_x0020_Maquina": false }
-                    }
-                  },
-                  {
-                    "elmType": "button",
-                    "style": {
-                      "display": "=if([$Proteccion_x0020_Maquina]==true,'none','inline-flex')",
-                      "align-items": "center",
-                      "gap": "6px",
-                      "padding": "6px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #E1DFDD",
-                      "background-color": "#F3F2F1",
-                      "cursor": "pointer",
-                      "font-size": "12px",
-                      "font-weight": "650"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "¿La pérdida está relacionada con algún tipo de protección de la máquina/equipo?" }
-                    ],
-                    "customRowAction": {
-                      "action": "setValue",
-                      "actionInput": { "Proteccion_x0020_Maquina": true }
-                    }
-                  },
-
-                  {
-                    "elmType": "button",
-                    "style": {
-                      "display": "=if([$Perdida_x0020_Ergonomica]==true,'inline-flex','none')",
-                      "align-items": "center",
-                      "gap": "6px",
-                      "padding": "6px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #BBD7F0",
-                      "background-color": "#E6F2FF",
-                      "cursor": "pointer",
-                      "font-size": "12px",
-                      "font-weight": "650"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "✓" },
-                      { "elmType": "span", "txtContent": "¿La pérdida está relacionada con cuestiones ergonómicas?" }
-                    ],
-                    "customRowAction": {
-                      "action": "setValue",
-                      "actionInput": { "Perdida_x0020_Ergonomica": false }
-                    }
-                  },
-                  {
-                    "elmType": "button",
-                    "style": {
-                      "display": "=if([$Perdida_x0020_Ergonomica]==true,'none','inline-flex')",
-                      "align-items": "center",
-                      "gap": "6px",
-                      "padding": "6px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #E1DFDD",
-                      "background-color": "#F3F2F1",
-                      "cursor": "pointer",
-                      "font-size": "12px",
-                      "font-weight": "650"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "¿La pérdida está relacionada con cuestiones ergonómicas?" }
-                    ],
-                    "customRowAction": {
-                      "action": "setValue",
-                      "actionInput": { "Perdida_x0020_Ergonomica": true }
-                    }
-                  },
-
-                  {
-                    "elmType": "button",
-                    "style": {
-                      "display": "=if([$Afecta_x0020_Material]==true,'inline-flex','none')",
-                      "align-items": "center",
-                      "gap": "6px",
-                      "padding": "6px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #BBD7F0",
-                      "background-color": "#E6F2FF",
-                      "cursor": "pointer",
-                      "font-size": "12px",
-                      "font-weight": "650"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "✓" },
-                      { "elmType": "span", "txtContent": "¿El OPL puede afectar el material?" }
-                    ],
-                    "customRowAction": {
-                      "action": "setValue",
-                      "actionInput": { "Afecta_x0020_Material": false }
-                    }
-                  },
-                  {
-                    "elmType": "button",
-                    "style": {
-                      "display": "=if([$Afecta_x0020_Material]==true,'none','inline-flex')",
-                      "align-items": "center",
-                      "gap": "6px",
-                      "padding": "6px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #E1DFDD",
-                      "background-color": "#F3F2F1",
-                      "cursor": "pointer",
-                      "font-size": "12px",
-                      "font-weight": "650"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "¿El OPL puede afectar el material?" }
-                    ],
-                    "customRowAction": {
-                      "action": "setValue",
-                      "actionInput": { "Afecta_x0020_Material": true }
-                    }
-                  },
-
-                  {
-                    "elmType": "button",
-                    "style": {
-                      "display": "=if([$Afecta_x0020_Producto]==true,'inline-flex','none')",
-                      "align-items": "center",
-                      "gap": "6px",
-                      "padding": "6px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #BBD7F0",
-                      "background-color": "#E6F2FF",
-                      "cursor": "pointer",
-                      "font-size": "12px",
-                      "font-weight": "650"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "✓" },
-                      { "elmType": "span", "txtContent": "¿El OPL puede afectar el producto final?" }
-                    ],
-                    "customRowAction": {
-                      "action": "setValue",
-                      "actionInput": { "Afecta_x0020_Producto": false }
-                    }
-                  },
-                  {
-                    "elmType": "button",
-                    "style": {
-                      "display": "=if([$Afecta_x0020_Producto]==true,'none','inline-flex')",
-                      "align-items": "center",
-                      "gap": "6px",
-                      "padding": "6px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #E1DFDD",
-                      "background-color": "#F3F2F1",
-                      "cursor": "pointer",
-                      "font-size": "12px",
-                      "font-weight": "650"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "¿El OPL puede afectar el producto final?" }
-                    ],
-                    "customRowAction": {
-                      "action": "setValue",
-                      "actionInput": { "Afecta_x0020_Producto": true }
-                    }
-                  },
-
-                  {
-                    "elmType": "button",
-                    "style": {
-                      "display": "=if([$Relacioado_x0020_Calidad]==true,'inline-flex','none')",
-                      "align-items": "center",
-                      "gap": "6px",
-                      "padding": "6px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #BBD7F0",
-                      "background-color": "#E6F2FF",
-                      "cursor": "pointer",
-                      "font-size": "12px",
-                      "font-weight": "650"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "✓" },
-                      { "elmType": "span", "txtContent": "¿El OPL tiene relación con el sistema de calidad?" }
-                    ],
-                    "customRowAction": {
-                      "action": "setValue",
-                      "actionInput": { "Relacioado_x0020_Calidad": false }
-                    }
-                  },
-                  {
-                    "elmType": "button",
-                    "style": {
-                      "display": "=if([$Relacioado_x0020_Calidad]==true,'none','inline-flex')",
-                      "align-items": "center",
-                      "gap": "6px",
-                      "padding": "6px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #E1DFDD",
-                      "background-color": "#F3F2F1",
-                      "cursor": "pointer",
-                      "font-size": "12px",
-                      "font-weight": "650"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "¿El OPL tiene relación con el sistema de calidad?" }
-                    ],
-                    "customRowAction": {
-                      "action": "setValue",
-                      "actionInput": { "Relacioado_x0020_Calidad": true }
-                    }
-                  },
-
-                  {
-                    "elmType": "button",
-                    "style": {
-                      "display": "=if([$Relacionada_x0020_Limpieza]==true,'inline-flex','none')",
-                      "align-items": "center",
-                      "gap": "6px",
-                      "padding": "6px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #BBD7F0",
-                      "background-color": "#E6F2FF",
-                      "cursor": "pointer",
-                      "font-size": "12px",
-                      "font-weight": "650"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "✓" },
-                      { "elmType": "span", "txtContent": "¿El OPL tiene relación con puntos de limpieza que afectan la calidad?" }
-                    ],
-                    "customRowAction": {
-                      "action": "setValue",
-                      "actionInput": { "Relacionada_x0020_Limpieza": false }
-                    }
-                  },
-                  {
-                    "elmType": "button",
-                    "style": {
-                      "display": "=if([$Relacionada_x0020_Limpieza]==true,'none','inline-flex')",
-                      "align-items": "center",
-                      "gap": "6px",
-                      "padding": "6px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #E1DFDD",
-                      "background-color": "#F3F2F1",
-                      "cursor": "pointer",
-                      "font-size": "12px",
-                      "font-weight": "650"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "¿El OPL tiene relación con puntos de limpieza que afectan la calidad?" }
-                    ],
-                    "customRowAction": {
-                      "action": "setValue",
-                      "actionInput": { "Relacionada_x0020_Limpieza": true }
-                    }
-                  },
-
-                  {
-                    "elmType": "button",
-                    "style": {
-                      "display": "=if([$Altera_x0020_Caracteristicas]==true,'inline-flex','none')",
-                      "align-items": "center",
-                      "gap": "6px",
-                      "padding": "6px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #BBD7F0",
-                      "background-color": "#E6F2FF",
-                      "cursor": "pointer",
-                      "font-size": "12px",
-                      "font-weight": "650"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "✓" },
-                      { "elmType": "span", "txtContent": "¿El OPL altera alguna característica del producto?" }
-                    ],
-                    "customRowAction": {
-                      "action": "setValue",
-                      "actionInput": { "Altera_x0020_Caracteristicas": false }
-                    }
-                  },
-                  {
-                    "elmType": "button",
-                    "style": {
-                      "display": "=if([$Altera_x0020_Caracteristicas]==true,'none','inline-flex')",
-                      "align-items": "center",
-                      "gap": "6px",
-                      "padding": "6px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #E1DFDD",
-                      "background-color": "#F3F2F1",
-                      "cursor": "pointer",
-                      "font-size": "12px",
-                      "font-weight": "650"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "¿El OPL altera alguna característica del producto?" }
-                    ],
-                    "customRowAction": {
-                      "action": "setValue",
-                      "actionInput": { "Altera_x0020_Caracteristicas": true }
-                    }
-                  },
-
-                  {
-                    "elmType": "button",
-                    "style": {
-                      "display": "=if([$Relacionado_x0020_con_x0020_Requ]==true,'inline-flex','none')",
-                      "align-items": "center",
-                      "gap": "6px",
-                      "padding": "6px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #BBD7F0",
-                      "background-color": "#E6F2FF",
-                      "cursor": "pointer",
-                      "font-size": "12px",
-                      "font-weight": "650"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "✓" },
-                      { "elmType": "span", "txtContent": "¿El OPL tiene relación con algún requerimiento de calidad? (Ej.: ¿Altera la forma de hacer P o el uso del QTM?)" }
-                    ],
-                    "customRowAction": {
-                      "action": "setValue",
-                      "actionInput": { "Relacionado_x0020_con_x0020_Requ": false }
-                    }
-                  },
-                  {
-                    "elmType": "button",
-                    "style": {
-                      "display": "=if([$Relacionado_x0020_con_x0020_Requ]==true,'none','inline-flex')",
-                      "align-items": "center",
-                      "gap": "6px",
-                      "padding": "6px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #E1DFDD",
-                      "background-color": "#F3F2F1",
-                      "cursor": "pointer",
-                      "font-size": "12px",
-                      "font-weight": "650"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "¿El OPL tiene relación con algún requerimiento de calidad? (Ej.: ¿Altera la forma de hacer P o el uso del QTM?)" }
-                    ],
-                    "customRowAction": {
-                      "action": "setValue",
-                      "actionInput": { "Relacionado_x0020_con_x0020_Requ": true }
-                    }
+                      /* ... pegá acá el resto de tus toggles tal cual ya los tenías ... */
+                    ]
                   }
                 ]
               },
@@ -585,30 +168,27 @@
                 "elmType": "div",
                 "style": {
                   "display": "flex",
-                  "justify-content": "space-between",
-                  "align-items": "center",
+                  "justify-content": "flex-end",
                   "gap": "10px",
-                  "padding-top": "6px",
-                  "border-top": "1px solid #F3F2F1",
-                  "font-size": "12px",
-                  "color": "#605E5C"
+                  "padding-top": "8px",
+                  "border-top": "1px solid #F3F2F1"
                 },
                 "children": [
                   {
-                    "elmType": "div",
-                    "style": { "display": "flex", "gap": "6px", "align-items": "center" },
-                    "children": [
-                      { "elmType": "span", "txtContent": "ID #" },
-                      { "elmType": "span", "txtContent": "[$ID]" }
-                    ]
-                  },
-                  {
-                    "elmType": "div",
-                    "style": { "display": "flex", "gap": "6px", "align-items": "center" },
-                    "children": [
-                      { "elmType": "span", "txtContent": "Modif:" },
-                      { "elmType": "span", "txtContent": "[$Modified]" }
-                    ]
+                    "elmType": "button",
+                    "style": {
+                      "padding": "8px 12px",
+                      "border": "1px solid #0078D4",
+                      "border-radius": "12px",
+                      "cursor": "pointer",
+                      "background-color": "#E6F2FF",
+                      "font-weight": "650"
+                    },
+                    "txtContent": "Ejecutar workflow",
+                    "customRowAction": {
+                      "action": "executeFlow",
+                      "actionParams": "{\"id\":\"TU_FLOW_ID_AQUI\"}"
+                    }
                   }
                 ]
               }
