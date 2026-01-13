@@ -63,7 +63,6 @@
                   {
                     "elmType": "span",
                     "style": {
-                      "display": "=if([$tipodocumento]=='' || [$tipodocumento]==null,'none','inline-flex')",
                       "padding": "2px 10px",
                       "border-radius": "999px",
                       "border": "1px solid #E1DFDD",
@@ -77,20 +76,6 @@
                       "text-overflow": "ellipsis"
                     },
                     "txtContent": "[$tipodocumento]"
-                  },
-                  {
-                    "elmType": "span",
-                    "style": {
-                      "display": "=if([$tipodocumento]=='' || [$tipodocumento]==null,'inline-flex','none')",
-                      "padding": "2px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #E1DFDD",
-                      "background-color": "#F3F2F1",
-                      "font-size": "12px",
-                      "font-weight": "700",
-                      "color": "#A19F9D"
-                    },
-                    "txtContent": "–"
                   }
                 ]
               },
@@ -114,7 +99,6 @@
                   {
                     "elmType": "div",
                     "style": {
-                      "display": "=if([$material.lookupValue]=='' || [$material.lookupValue]==null,'none','block')",
                       "font-size": "13px",
                       "font-weight": "700",
                       "color": "#323130",
@@ -125,23 +109,13 @@
                     "txtContent": "[$material.lookupValue]"
                   },
                   {
-                    "elmType": "div",
-                    "style": {
-                      "display": "=if([$material.lookupValue]=='' || [$material.lookupValue]==null,'block','none')",
-                      "font-size": "13px",
-                      "font-weight": "700",
-                      "color": "#A19F9D"
-                    },
-                    "txtContent": "–"
-                  },
-                  {
                     "elmType": "a",
                     "attributes": {
                       "href": "[$material_x003a_url.lookupValue]",
                       "target": "_blank"
                     },
                     "style": {
-                      "display": "=if([$material_x003a_url.lookupValue]=='' || [$material_x003a_url.lookupValue]==null,'none','inline-flex')",
+                      "display": "inline-flex",
                       "align-items": "center",
                       "justify-content": "center",
                       "gap": "8px",
@@ -160,15 +134,6 @@
                       { "elmType": "span", "txtContent": "🔗" },
                       { "elmType": "span", "txtContent": "Abrir material" }
                     ]
-                  },
-                  {
-                    "elmType": "div",
-                    "style": {
-                      "display": "=if([$material_x003a_url.lookupValue]=='' || [$material_x003a_url.lookupValue]==null,'block','none')",
-                      "font-size": "12px",
-                      "color": "#A19F9D"
-                    },
-                    "txtContent": "Sin URL"
                   }
                 ]
               }
