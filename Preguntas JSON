@@ -89,7 +89,7 @@
                     },
                     "children": [
                       { "elmType": "span", "txtContent": "✓" },
-                      { "elmType": "span", "txtContent": "Peligro físico" }
+                      { "elmType": "span", "txtContent": "¿La pérdida tiene vínculo con algún peligro físico o de seguridad?" }
                     ],
                     "customRowAction": {
                       "action": "setValue",
@@ -111,7 +111,7 @@
                       "font-weight": "650"
                     },
                     "children": [
-                      { "elmType": "span", "txtContent": "Peligro físico" }
+                      { "elmType": "span", "txtContent": "¿La pérdida tiene vínculo con algún peligro físico o de seguridad?" }
                     ],
                     "customRowAction": {
                       "action": "setValue",
@@ -135,7 +135,7 @@
                     },
                     "children": [
                       { "elmType": "span", "txtContent": "✓" },
-                      { "elmType": "span", "txtContent": "Safety Map" }
+                      { "elmType": "span", "txtContent": "¿Algún impacto relacionado con el Safety Map?" }
                     ],
                     "customRowAction": {
                       "action": "setValue",
@@ -157,7 +157,7 @@
                       "font-weight": "650"
                     },
                     "children": [
-                      { "elmType": "span", "txtContent": "Safety Map" }
+                      { "elmType": "span", "txtContent": "¿Algún impacto relacionado con el Safety Map?" }
                     ],
                     "customRowAction": {
                       "action": "setValue",
@@ -181,7 +181,7 @@
                     },
                     "children": [
                       { "elmType": "span", "txtContent": "✓" },
-                      { "elmType": "span", "txtContent": "Medio Ambiente" }
+                      { "elmType": "span", "txtContent": "¿Existe algún impacto al medio ambiente?" }
                     ],
                     "customRowAction": {
                       "action": "setValue",
@@ -203,7 +203,7 @@
                       "font-weight": "650"
                     },
                     "children": [
-                      { "elmType": "span", "txtContent": "Medio Ambiente" }
+                      { "elmType": "span", "txtContent": "¿Existe algún impacto al medio ambiente?" }
                     ],
                     "customRowAction": {
                       "action": "setValue",
@@ -227,7 +227,7 @@
                     },
                     "children": [
                       { "elmType": "span", "txtContent": "✓" },
-                      { "elmType": "span", "txtContent": "Protección Máquina" }
+                      { "elmType": "span", "txtContent": "¿La pérdida está relacionada con algún tipo de protección de la máquina/equipo?" }
                     ],
                     "customRowAction": {
                       "action": "setValue",
@@ -249,7 +249,7 @@
                       "font-weight": "650"
                     },
                     "children": [
-                      { "elmType": "span", "txtContent": "Protección Máquina" }
+                      { "elmType": "span", "txtContent": "¿La pérdida está relacionada con algún tipo de protección de la máquina/equipo?" }
                     ],
                     "customRowAction": {
                       "action": "setValue",
@@ -273,7 +273,7 @@
                     },
                     "children": [
                       { "elmType": "span", "txtContent": "✓" },
-                      { "elmType": "span", "txtContent": "Pérdida Ergonómica" }
+                      { "elmType": "span", "txtContent": "¿La pérdida está relacionada con cuestiones ergonómicas?" }
                     ],
                     "customRowAction": {
                       "action": "setValue",
@@ -295,7 +295,7 @@
                       "font-weight": "650"
                     },
                     "children": [
-                      { "elmType": "span", "txtContent": "Pérdida Ergonómica" }
+                      { "elmType": "span", "txtContent": "¿La pérdida está relacionada con cuestiones ergonómicas?" }
                     ],
                     "customRowAction": {
                       "action": "setValue",
@@ -319,7 +319,7 @@
                     },
                     "children": [
                       { "elmType": "span", "txtContent": "✓" },
-                      { "elmType": "span", "txtContent": "Afecta Material" }
+                      { "elmType": "span", "txtContent": "¿El OPL puede afectar el material?" }
                     ],
                     "customRowAction": {
                       "action": "setValue",
@@ -341,7 +341,7 @@
                       "font-weight": "650"
                     },
                     "children": [
-                      { "elmType": "span", "txtContent": "Afecta Material" }
+                      { "elmType": "span", "txtContent": "¿El OPL puede afectar el material?" }
                     ],
                     "customRowAction": {
                       "action": "setValue",
@@ -365,7 +365,7 @@
                     },
                     "children": [
                       { "elmType": "span", "txtContent": "✓" },
-                      { "elmType": "span", "txtContent": "Afecta Producto" }
+                      { "elmType": "span", "txtContent": "¿El OPL puede afectar el producto final?" }
                     ],
                     "customRowAction": {
                       "action": "setValue",
@@ -387,7 +387,7 @@
                       "font-weight": "650"
                     },
                     "children": [
-                      { "elmType": "span", "txtContent": "Afecta Producto" }
+                      { "elmType": "span", "txtContent": "¿El OPL puede afectar el producto final?" }
                     ],
                     "customRowAction": {
                       "action": "setValue",
@@ -411,7 +411,7 @@
                     },
                     "children": [
                       { "elmType": "span", "txtContent": "✓" },
-                      { "elmType": "span", "txtContent": "Relacionado Calidad" }
+                      { "elmType": "span", "txtContent": "¿El OPL tiene relación con el sistema de calidad?" }
                     ],
                     "customRowAction": {
                       "action": "setValue",
@@ -433,7 +433,7 @@
                       "font-weight": "650"
                     },
                     "children": [
-                      { "elmType": "span", "txtContent": "Relacionado Calidad" }
+                      { "elmType": "span", "txtContent": "¿El OPL tiene relación con el sistema de calidad?" }
                     ],
                     "customRowAction": {
                       "action": "setValue",
@@ -457,7 +457,7 @@
                     },
                     "children": [
                       { "elmType": "span", "txtContent": "✓" },
-                      { "elmType": "span", "txtContent": "Relacionada Limpieza" }
+                      { "elmType": "span", "txtContent": "¿El OPL tiene relación con puntos de limpieza que afectan la calidad?" }
                     ],
                     "customRowAction": {
                       "action": "setValue",
@@ -479,7 +479,7 @@
                       "font-weight": "650"
                     },
                     "children": [
-                      { "elmType": "span", "txtContent": "Relacionada Limpieza" }
+                      { "elmType": "span", "txtContent": "¿El OPL tiene relación con puntos de limpieza que afectan la calidad?" }
                     ],
                     "customRowAction": {
                       "action": "setValue",
@@ -503,7 +503,7 @@
                     },
                     "children": [
                       { "elmType": "span", "txtContent": "✓" },
-                      { "elmType": "span", "txtContent": "Altera características" }
+                      { "elmType": "span", "txtContent": "¿El OPL altera alguna característica del producto?" }
                     ],
                     "customRowAction": {
                       "action": "setValue",
@@ -525,7 +525,7 @@
                       "font-weight": "650"
                     },
                     "children": [
-                      { "elmType": "span", "txtContent": "Altera características" }
+                      { "elmType": "span", "txtContent": "¿El OPL altera alguna característica del producto?" }
                     ],
                     "customRowAction": {
                       "action": "setValue",
@@ -549,7 +549,7 @@
                     },
                     "children": [
                       { "elmType": "span", "txtContent": "✓" },
-                      { "elmType": "span", "txtContent": "Relacionado con requerimiento" }
+                      { "elmType": "span", "txtContent": "¿El OPL tiene relación con algún requerimiento de calidad? (Ej.: ¿Altera la forma de hacer P o el uso del QTM?)" }
                     ],
                     "customRowAction": {
                       "action": "setValue",
@@ -571,7 +571,7 @@
                       "font-weight": "650"
                     },
                     "children": [
-                      { "elmType": "span", "txtContent": "Relacionado con requerimiento" }
+                      { "elmType": "span", "txtContent": "¿El OPL tiene relación con algún requerimiento de calidad? (Ej.: ¿Altera la forma de hacer P o el uso del QTM?)" }
                     ],
                     "customRowAction": {
                       "action": "setValue",
