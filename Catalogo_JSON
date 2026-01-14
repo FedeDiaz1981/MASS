@@ -6,12 +6,18 @@
   "fillHorizontally": true,
   "formatter": {
     "elmType": "div",
-    "style": { "padding": "10px" },
+    "style": {
+      "padding": "10px",
+      "position": "relative"
+    },
     "children": [
       {
         "elmType": "div",
         "attributes": { "class": "sp-card-defaultClickButton" },
-        "customRowAction": { "action": "defaultClick" }
+        "customRowAction": { "action": "defaultClick" },
+        "style": {
+          "pointer-events": "none"
+        }
       },
       {
         "elmType": "div",
@@ -51,14 +57,22 @@
                 },
                 "txtContent": "[$Title]"
               },
-
               {
                 "elmType": "div",
-                "style": { "display": "flex", "gap": "8px", "align-items": "center", "flex-wrap": "wrap" },
+                "style": {
+                  "display": "flex",
+                  "gap": "8px",
+                  "align-items": "center",
+                  "flex-wrap": "wrap"
+                },
                 "children": [
                   {
                     "elmType": "span",
-                    "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" },
+                    "style": {
+                      "font-size": "12px",
+                      "color": "#605E5C",
+                      "font-weight": "700"
+                    },
                     "txtContent": "Categoría:"
                   },
                   {
@@ -80,7 +94,6 @@
                   }
                 ]
               },
-
               {
                 "elmType": "div",
                 "style": {
@@ -133,7 +146,6 @@
                   }
                 ]
               },
-
               {
                 "elmType": "button",
                 "style": {
@@ -149,7 +161,10 @@
                   "font-size": "13px",
                   "font-weight": "900",
                   "color": "#0F172A",
-                  "width": "fit-content"
+                  "width": "fit-content",
+                  "position": "relative",
+                  "z-index": "2",
+                  "pointer-events": "auto"
                 },
                 "children": [
                   { "elmType": "span", "txtContent": "=if([$Lecciones] == true, '🔎', '⬇️')" },
@@ -157,7 +172,7 @@
                 ],
                 "customRowAction": {
                   "action": "openUrl",
-                  "url": "=if([$Lecciones] == true, [$url], 'https://pmicloud.sharepoint.com/_layouts/15/download.aspx?SourceUrl=' + [$url])"
+                  "url": "=if([$Lecciones] == true, [$url], if(indexOf([$url], '?') == -1, [$url] + '?download=1', [$url] + '&download=1'))"
                 }
               }
             ]
