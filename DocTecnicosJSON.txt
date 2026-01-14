@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/tile-formatting.schema.json",
-  "height": 210,
+  "height": 260,
   "width": 360,
   "hideSelection": true,
   "fillHorizontally": true,
@@ -161,6 +161,32 @@
                         "txtContent": "Abrir material"
                       }
                     ]
+                  },
+                  {
+                    "elmType": "button",
+                    "style": {
+                      "display": "inline-flex",
+                      "align-items": "center",
+                      "justify-content": "center",
+                      "gap": "8px",
+                      "padding": "10px 12px",
+                      "border-radius": "12px",
+                      "border": "1px solid #E1DFDD",
+                      "background-color": "white",
+                      "cursor": "pointer",
+                      "font-size": "13px",
+                      "font-weight": "800",
+                      "color": "#0F172A",
+                      "width": "fit-content"
+                    },
+                    "children": [
+                      { "elmType": "span", "txtContent": "🚀" },
+                      { "elmType": "span", "txtContent": "Enviar a aprobar" }
+                    ],
+                    "customRowAction": {
+                      "action": "executeFlow",
+                      "actionParams": "{\"id\":\"56bcc52a-df69-412d-89fd-088c4889ac5d\"}"
+                    }
                   }
                 ]
               }
