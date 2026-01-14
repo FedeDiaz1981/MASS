@@ -6,12 +6,18 @@
   "fillHorizontally": true,
   "formatter": {
     "elmType": "div",
-    "style": { "padding": "10px" },
+    "style": {
+      "padding": "10px"
+    },
     "children": [
       {
         "elmType": "div",
-        "attributes": { "class": "sp-card-defaultClickButton" },
-        "customRowAction": { "action": "defaultClick" }
+        "attributes": {
+          "class": "sp-card-defaultClickButton"
+        },
+        "customRowAction": {
+          "action": "defaultClick"
+        }
       },
       {
         "elmType": "div",
@@ -27,7 +33,10 @@
         "children": [
           {
             "elmType": "div",
-            "style": { "height": "6px", "background-color": "#0078D4" }
+            "style": {
+              "height": "6px",
+              "background-color": "#0078D4"
+            }
           },
           {
             "elmType": "div",
@@ -53,11 +62,19 @@
               },
               {
                 "elmType": "div",
-                "style": { "display": "flex", "gap": "8px", "align-items": "center" },
+                "style": {
+                  "display": "flex",
+                  "gap": "8px",
+                  "align-items": "center"
+                },
                 "children": [
                   {
                     "elmType": "span",
-                    "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "600" },
+                    "style": {
+                      "font-size": "12px",
+                      "color": "#605E5C",
+                      "font-weight": "600"
+                    },
                     "txtContent": "Tipo:"
                   },
                   {
@@ -93,7 +110,11 @@
                 "children": [
                   {
                     "elmType": "div",
-                    "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" },
+                    "style": {
+                      "font-size": "12px",
+                      "color": "#605E5C",
+                      "font-weight": "700"
+                    },
                     "txtContent": "Material"
                   },
                   {
@@ -111,7 +132,7 @@
                   {
                     "elmType": "a",
                     "attributes": {
-                      "href": "[$material_x003a_url.lookupValue]",
+                      "href": "[$material_x003a_url]",
                       "target": "_blank"
                     },
                     "style": {
@@ -131,8 +152,14 @@
                       "width": "fit-content"
                     },
                     "children": [
-                      { "elmType": "span", "txtContent": "🔗" },
-                      { "elmType": "span", "txtContent": "Abrir material" }
+                      {
+                        "elmType": "span",
+                        "txtContent": "🔗"
+                      },
+                      {
+                        "elmType": "span",
+                        "txtContent": "Abrir material"
+                      }
                     ]
                   }
                 ]
