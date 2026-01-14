@@ -51,14 +51,22 @@
                 },
                 "txtContent": "[$Title]"
               },
-
               {
                 "elmType": "div",
-                "style": { "display": "flex", "gap": "8px", "align-items": "center", "flex-wrap": "wrap" },
+                "style": {
+                  "display": "flex",
+                  "gap": "8px",
+                  "align-items": "center",
+                  "flex-wrap": "wrap"
+                },
                 "children": [
                   {
                     "elmType": "span",
-                    "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" },
+                    "style": {
+                      "font-size": "12px",
+                      "color": "#605E5C",
+                      "font-weight": "700"
+                    },
                     "txtContent": "Categoría:"
                   },
                   {
@@ -80,7 +88,6 @@
                   }
                 ]
               },
-
               {
                 "elmType": "div",
                 "style": {
@@ -99,45 +106,92 @@
                     "children": [
                       {
                         "elmType": "div",
-                        "style": { "display": "=if([$Department.lookupValue] == '', 'none', 'flex')", "gap": "6px", "align-items": "center" },
+                        "style": {
+                          "display": "=if([$Department.lookupValue] == '', 'none', 'flex')",
+                          "gap": "6px",
+                          "align-items": "center"
+                        },
                         "children": [
-                          { "elmType": "span", "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" }, "txtContent": "Depto:" },
-                          { "elmType": "span", "style": { "font-size": "12px", "font-weight": "800", "color": "#323130" }, "txtContent": "[$Department.lookupValue]" }
+                          {
+                            "elmType": "span",
+                            "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" },
+                            "txtContent": "Depto:"
+                          },
+                          {
+                            "elmType": "span",
+                            "style": { "font-size": "12px", "font-weight": "800", "color": "#323130" },
+                            "txtContent": "[$Department.lookupValue]"
+                          }
                         ]
                       },
                       {
                         "elmType": "div",
-                        "style": { "display": "=if([$Technology.lookupValue] == '', 'none', 'flex')", "gap": "6px", "align-items": "center" },
+                        "style": {
+                          "display": "=if([$Technology.lookupValue] == '', 'none', 'flex')",
+                          "gap": "6px",
+                          "align-items": "center"
+                        },
                         "children": [
-                          { "elmType": "span", "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" }, "txtContent": "Tec:" },
-                          { "elmType": "span", "style": { "font-size": "12px", "font-weight": "800", "color": "#323130" }, "txtContent": "[$Technology.lookupValue]" }
+                          {
+                            "elmType": "span",
+                            "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" },
+                            "txtContent": "Tec:"
+                          },
+                          {
+                            "elmType": "span",
+                            "style": { "font-size": "12px", "font-weight": "800", "color": "#323130" },
+                            "txtContent": "[$Technology.lookupValue]"
+                          }
                         ]
                       },
                       {
                         "elmType": "div",
-                        "style": { "display": "=if([$Line.lookupValue] == '', 'none', 'flex')", "gap": "6px", "align-items": "center" },
+                        "style": {
+                          "display": "=if([$Line.lookupValue] == '', 'none', 'flex')",
+                          "gap": "6px",
+                          "align-items": "center"
+                        },
                         "children": [
-                          { "elmType": "span", "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" }, "txtContent": "Línea:" },
-                          { "elmType": "span", "style": { "font-size": "12px", "font-weight": "800", "color": "#323130" }, "txtContent": "[$Line.lookupValue]" }
+                          {
+                            "elmType": "span",
+                            "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" },
+                            "txtContent": "Línea:"
+                          },
+                          {
+                            "elmType": "span",
+                            "style": { "font-size": "12px", "font-weight": "800", "color": "#323130" },
+                            "txtContent": "[$Line.lookupValue]"
+                          }
                         ]
                       },
                       {
                         "elmType": "div",
-                        "style": { "display": "=if([$Equipment.lookupValue] == '', 'none', 'flex')", "gap": "6px", "align-items": "center" },
+                        "style": {
+                          "display": "=if([$Equipment.lookupValue] == '', 'none', 'flex')",
+                          "gap": "6px",
+                          "align-items": "center"
+                        },
                         "children": [
-                          { "elmType": "span", "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" }, "txtContent": "Equipo:" },
-                          { "elmType": "span", "style": { "font-size": "12px", "font-weight": "800", "color": "#323130" }, "txtContent": "[$Equipment.lookupValue]" }
+                          {
+                            "elmType": "span",
+                            "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" },
+                            "txtContent": "Equipo:"
+                          },
+                          {
+                            "elmType": "span",
+                            "style": { "font-size": "12px", "font-weight": "800", "color": "#323130" },
+                            "txtContent": "[$Equipment.lookupValue]"
+                          }
                         ]
                       }
                     ]
                   }
                 ]
               },
-
               {
                 "elmType": "button",
                 "style": {
-                  "display": "inline-flex",
+                  "display": "=if([$url] == '' , 'none', 'inline-flex')",
                   "align-items": "center",
                   "justify-content": "center",
                   "gap": "8px",
@@ -152,10 +206,13 @@
                   "width": "fit-content"
                 },
                 "children": [
-                  { "elmType": "span", "txtContent": "🔎" },
-                  { "elmType": "span", "txtContent": "Abrir" }
+                  { "elmType": "span", "txtContent": "=if([$Lecciones] == true, '🔎', '⬇️')" },
+                  { "elmType": "span", "txtContent": "=if([$Lecciones] == true, 'Abrir', 'Descargar')" }
                 ],
-                "customRowAction": { "action": "defaultClick" }
+                "customRowAction": {
+                  "action": "navigate",
+                  "actionParams": "[$url]"
+                }
               }
             ]
           }
