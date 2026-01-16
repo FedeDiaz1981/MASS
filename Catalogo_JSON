@@ -146,7 +146,7 @@
                   {
                     "elmType": "a",
                     "style": {
-                      "display": "=if(or([$Lecciones] == true, [$Lecciones] == 1, [$Lecciones] == '1', [$Lecciones] == 'true', [$Lecciones] == 'True'), 'inline-flex', 'none')",
+                      "display": "=if([$Lecciones], 'inline-flex', 'none')",
                       "align-items": "center",
                       "justify-content": "center",
                       "gap": "8px",
@@ -170,7 +170,7 @@
                   {
                     "elmType": "a",
                     "style": {
-                      "display": "=if(or([$Lecciones] == true, [$Lecciones] == 1, [$Lecciones] == '1', [$Lecciones] == 'true', [$Lecciones] == 'True'), 'none', 'inline-flex')",
+                      "display": "=if([$Lecciones], 'none', 'inline-flex')",
                       "align-items": "center",
                       "justify-content": "center",
                       "gap": "8px",
