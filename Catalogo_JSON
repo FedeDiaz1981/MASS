@@ -22,16 +22,11 @@
           "flex-direction": "column",
           "cursor": "pointer"
         },
-        "customRowAction": {
-          "action": "defaultClick"
-        },
+        "customRowAction": { "action": "defaultClick" },
         "children": [
           {
             "elmType": "div",
-            "style": {
-              "height": "6px",
-              "background-color": "#0078D4"
-            }
+            "style": { "height": "6px", "background-color": "#0078D4" }
           },
           {
             "elmType": "div",
@@ -66,11 +61,7 @@
                 "children": [
                   {
                     "elmType": "span",
-                    "style": {
-                      "font-size": "12px",
-                      "color": "#605E5C",
-                      "font-weight": "700"
-                    },
+                    "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" },
                     "txtContent": "Categoría:"
                   },
                   {
@@ -121,11 +112,7 @@
                 "children": [
                   {
                     "elmType": "div",
-                    "style": {
-                      "display": "flex",
-                      "gap": "10px",
-                      "flex-wrap": "wrap"
-                    },
+                    "style": { "display": "flex", "gap": "10px", "flex-wrap": "wrap" },
                     "children": [
                       {
                         "elmType": "div",
@@ -135,24 +122,8 @@
                           "align-items": "center"
                         },
                         "children": [
-                          {
-                            "elmType": "span",
-                            "style": {
-                              "font-size": "12px",
-                              "color": "#605E5C",
-                              "font-weight": "700"
-                            },
-                            "txtContent": "Depto:"
-                          },
-                          {
-                            "elmType": "span",
-                            "style": {
-                              "font-size": "12px",
-                              "font-weight": "800",
-                              "color": "#323130"
-                            },
-                            "txtContent": "[$Department.lookupValue]"
-                          }
+                          { "elmType": "span", "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" }, "txtContent": "Depto:" },
+                          { "elmType": "span", "style": { "font-size": "12px", "font-weight": "800", "color": "#323130" }, "txtContent": "[$Department.lookupValue]" }
                         ]
                       },
                       {
@@ -163,24 +134,8 @@
                           "align-items": "center"
                         },
                         "children": [
-                          {
-                            "elmType": "span",
-                            "style": {
-                              "font-size": "12px",
-                              "color": "#605E5C",
-                              "font-weight": "700"
-                            },
-                            "txtContent": "Tec:"
-                          },
-                          {
-                            "elmType": "span",
-                            "style": {
-                              "font-size": "12px",
-                              "font-weight": "800",
-                              "color": "#323130"
-                            },
-                            "txtContent": "[$Technology.lookupValue]"
-                          }
+                          { "elmType": "span", "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" }, "txtContent": "Tec:" },
+                          { "elmType": "span", "style": { "font-size": "12px", "font-weight": "800", "color": "#323130" }, "txtContent": "[$Technology.lookupValue]" }
                         ]
                       },
                       {
@@ -191,24 +146,8 @@
                           "align-items": "center"
                         },
                         "children": [
-                          {
-                            "elmType": "span",
-                            "style": {
-                              "font-size": "12px",
-                              "color": "#605E5C",
-                              "font-weight": "700"
-                            },
-                            "txtContent": "Línea:"
-                          },
-                          {
-                            "elmType": "span",
-                            "style": {
-                              "font-size": "12px",
-                              "font-weight": "800",
-                              "color": "#323130"
-                            },
-                            "txtContent": "[$Line.lookupValue]"
-                          }
+                          { "elmType": "span", "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" }, "txtContent": "Línea:" },
+                          { "elmType": "span", "style": { "font-size": "12px", "font-weight": "800", "color": "#323130" }, "txtContent": "[$Line.lookupValue]" }
                         ]
                       },
                       {
@@ -219,24 +158,8 @@
                           "align-items": "center"
                         },
                         "children": [
-                          {
-                            "elmType": "span",
-                            "style": {
-                              "font-size": "12px",
-                              "color": "#605E5C",
-                              "font-weight": "700"
-                            },
-                            "txtContent": "Equipo:"
-                          },
-                          {
-                            "elmType": "span",
-                            "style": {
-                              "font-size": "12px",
-                              "font-weight": "800",
-                              "color": "#323130"
-                            },
-                            "txtContent": "[$Equipment.lookupValue]"
-                          }
+                          { "elmType": "span", "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" }, "txtContent": "Equipo:" },
+                          { "elmType": "span", "style": { "font-size": "12px", "font-weight": "800", "color": "#323130" }, "txtContent": "[$Equipment.lookupValue]" }
                         ]
                       }
                     ]
@@ -274,20 +197,14 @@
                       "target": "_blank"
                     },
                     "children": [
-                      {
-                        "elmType": "span",
-                        "txtContent": "🔎"
-                      },
-                      {
-                        "elmType": "span",
-                        "txtContent": "Abrir"
-                      }
+                      { "elmType": "span", "txtContent": "🔎" },
+                      { "elmType": "span", "txtContent": "Abrir" }
                     ]
                   },
                   {
                     "elmType": "a",
                     "style": {
-                      "display": "=if([$Lecciones] == false, 'inline-flex', 'none')",
+                      "display": "=if([$Lecciones] != true, 'inline-flex', 'none')",
                       "align-items": "center",
                       "justify-content": "center",
                       "gap": "8px",
@@ -304,18 +221,11 @@
                     },
                     "attributes": {
                       "href": "[$url]",
-                      "target": "_blank",
-                      "download": "download"
+                      "target": "_blank"
                     },
                     "children": [
-                      {
-                        "elmType": "span",
-                        "txtContent": "⬇️"
-                      },
-                      {
-                        "elmType": "span",
-                        "txtContent": "Descargar"
-                      }
+                      { "elmType": "span", "txtContent": "⬇️" },
+                      { "elmType": "span", "txtContent": "Descargar" }
                     ]
                   }
                 ]
