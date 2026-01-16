@@ -6,9 +6,7 @@
   "fillHorizontally": true,
   "formatter": {
     "elmType": "div",
-    "style": {
-      "padding": "10px"
-    },
+    "style": { "padding": "10px" },
     "children": [
       {
         "elmType": "div",
@@ -24,18 +22,10 @@
         },
         "customRowAction": { "action": "defaultClick" },
         "children": [
+          { "elmType": "div", "style": { "height": "6px", "background-color": "#0078D4" } },
           {
             "elmType": "div",
-            "style": { "height": "6px", "background-color": "#0078D4" }
-          },
-          {
-            "elmType": "div",
-            "style": {
-              "padding": "12px",
-              "display": "flex",
-              "flex-direction": "column",
-              "gap": "10px"
-            },
+            "style": { "padding": "12px", "display": "flex", "flex-direction": "column", "gap": "10px" },
             "children": [
               {
                 "elmType": "div",
@@ -50,20 +40,12 @@
                 },
                 "txtContent": "[$Title]"
               },
+
               {
                 "elmType": "div",
-                "style": {
-                  "display": "flex",
-                  "gap": "8px",
-                  "align-items": "center",
-                  "flex-wrap": "wrap"
-                },
+                "style": { "display": "flex", "gap": "8px", "align-items": "center", "flex-wrap": "wrap" },
                 "children": [
-                  {
-                    "elmType": "span",
-                    "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" },
-                    "txtContent": "Categoría:"
-                  },
+                  { "elmType": "span", "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" }, "txtContent": "Categoría:" },
                   {
                     "elmType": "span",
                     "style": {
@@ -98,6 +80,7 @@
                   }
                 ]
               },
+
               {
                 "elmType": "div",
                 "style": {
@@ -116,11 +99,7 @@
                     "children": [
                       {
                         "elmType": "div",
-                        "style": {
-                          "display": "=if([$Department.lookupValue] == '', 'none', 'flex')",
-                          "gap": "6px",
-                          "align-items": "center"
-                        },
+                        "style": { "display": "=if([$Department.lookupValue] == '', 'none', 'flex')", "gap": "6px", "align-items": "center" },
                         "children": [
                           { "elmType": "span", "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" }, "txtContent": "Depto:" },
                           { "elmType": "span", "style": { "font-size": "12px", "font-weight": "800", "color": "#323130" }, "txtContent": "[$Department.lookupValue]" }
@@ -128,11 +107,7 @@
                       },
                       {
                         "elmType": "div",
-                        "style": {
-                          "display": "=if([$Technology.lookupValue] == '', 'none', 'flex')",
-                          "gap": "6px",
-                          "align-items": "center"
-                        },
+                        "style": { "display": "=if([$Technology.lookupValue] == '', 'none', 'flex')", "gap": "6px", "align-items": "center" },
                         "children": [
                           { "elmType": "span", "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" }, "txtContent": "Tec:" },
                           { "elmType": "span", "style": { "font-size": "12px", "font-weight": "800", "color": "#323130" }, "txtContent": "[$Technology.lookupValue]" }
@@ -140,100 +115,4 @@
                       },
                       {
                         "elmType": "div",
-                        "style": {
-                          "display": "=if([$Line.lookupValue] == '', 'none', 'flex')",
-                          "gap": "6px",
-                          "align-items": "center"
-                        },
-                        "children": [
-                          { "elmType": "span", "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" }, "txtContent": "Línea:" },
-                          { "elmType": "span", "style": { "font-size": "12px", "font-weight": "800", "color": "#323130" }, "txtContent": "[$Line.lookupValue]" }
-                        ]
-                      },
-                      {
-                        "elmType": "div",
-                        "style": {
-                          "display": "=if([$Equipment.lookupValue] == '', 'none', 'flex')",
-                          "gap": "6px",
-                          "align-items": "center"
-                        },
-                        "children": [
-                          { "elmType": "span", "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" }, "txtContent": "Equipo:" },
-                          { "elmType": "span", "style": { "font-size": "12px", "font-weight": "800", "color": "#323130" }, "txtContent": "[$Equipment.lookupValue]" }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "elmType": "div",
-                "style": {
-                  "display": "flex",
-                  "gap": "10px",
-                  "flex-wrap": "wrap"
-                },
-                "children": [
-                  {
-                    "elmType": "a",
-                    "style": {
-                      "display": "=if([$Lecciones] == true, 'inline-flex', 'none')",
-                      "align-items": "center",
-                      "justify-content": "center",
-                      "gap": "8px",
-                      "padding": "10px 12px",
-                      "border-radius": "12px",
-                      "border": "1px solid #BBD7F0",
-                      "background-color": "#E6F2FF",
-                      "cursor": "pointer",
-                      "font-size": "13px",
-                      "font-weight": "900",
-                      "color": "#0F172A",
-                      "text-decoration": "none",
-                      "width": "fit-content"
-                    },
-                    "attributes": {
-                      "href": "[$url]",
-                      "target": "_blank"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "🔎" },
-                      { "elmType": "span", "txtContent": "Abrir" }
-                    ]
-                  },
-                  {
-                    "elmType": "a",
-                    "style": {
-                      "display": "=if([$Lecciones] != true, 'inline-flex', 'none')",
-                      "align-items": "center",
-                      "justify-content": "center",
-                      "gap": "8px",
-                      "padding": "10px 12px",
-                      "border-radius": "12px",
-                      "border": "1px solid #C8C6C4",
-                      "background-color": "#FFFFFF",
-                      "cursor": "pointer",
-                      "font-size": "13px",
-                      "font-weight": "900",
-                      "color": "#0F172A",
-                      "text-decoration": "none",
-                      "width": "fit-content"
-                    },
-                    "attributes": {
-                      "href": "[$url]",
-                      "target": "_blank"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "⬇️" },
-                      { "elmType": "span", "txtContent": "Descargar" }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-}
+                        "style": { "display": "=if([$Line.lookup
