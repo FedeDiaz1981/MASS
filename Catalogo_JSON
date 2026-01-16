@@ -159,8 +159,8 @@
                     },
                     "attributes": { "href": "[$url]", "target": "_blank" },
                     "children": [
-                      { "elmType": "span", "txtContent": "🔎" },
-                      { "elmType": "span", "txtContent": "Abrir" }
+                      { "elmType": "span", "txtContent": "⬇️" },
+                      { "elmType": "span", "txtContent": "Descargar" }
                     ]
                   },
                   {
@@ -186,8 +186,8 @@
                       "target": "_blank"
                     },
                     "children": [
-                      { "elmType": "span", "txtContent": "⬇️" },
-                      { "elmType": "span", "txtContent": "Descargar" }
+                      { "elmType": "span", "txtContent": "🔎" },
+                      { "elmType": "span", "txtContent": "Abrir" }
                     ]
                   }
                 ]
