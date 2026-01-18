@@ -1,0 +1,156 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/tile-formatting.schema.json",
+  "height": 210,
+  "width": 320,
+  "hideSelection": true,
+  "fillHorizontally": true,
+  "formatter": {
+    "elmType": "div",
+    "style": {
+      "padding": "10px"
+    },
+    "children": [
+      {
+        "elmType": "div",
+        "style": {
+          "border": "1px solid #E6E6E6",
+          "border-radius": "16px",
+          "box-shadow": "0 6px 18px rgba(0,0,0,0.08)",
+          "background-color": "white",
+          "overflow": "hidden",
+          "display": "flex",
+          "flex-direction": "column"
+        },
+        "children": [
+          {
+            "elmType": "div",
+            "style": {
+              "height": "6px",
+              "background-color": "=if([$estado]=='Pendiente','#FFB900', if([$estado]=='Aprobado','#107C10','#D13438'))"
+            }
+          },
+          {
+            "elmType": "div",
+            "style": {
+              "padding": "12px",
+              "display": "flex",
+              "flex-direction": "column",
+              "gap": "10px"
+            },
+            "children": [
+              {
+                "elmType": "div",
+                "style": {
+                  "display": "flex",
+                  "justify-content": "space-between",
+                  "gap": "10px"
+                },
+                "children": [
+                  {
+                    "elmType": "div",
+                    "style": {
+                      "font-size": "16px",
+                      "font-weight": "700",
+                      "white-space": "nowrap",
+                      "overflow": "hidden",
+                      "text-overflow": "ellipsis"
+                    },
+                    "txtContent": "[$Title]"
+                  },
+                  {
+                    "elmType": "div",
+                    "style": {
+                      "padding": "4px 10px",
+                      "border-radius": "999px",
+                      "font-size": "12px",
+                      "font-weight": "600",
+                      "border": "1px solid #E6E6E6",
+                      "background-color": "=if([$estado]=='Pendiente','#FFF7E6', if([$estado]=='Aprobado','#E6FFED','#FFE6E6'))"
+                    },
+                    "txtContent": "[$estado]"
+                  }
+                ]
+              },
+              {
+                "elmType": "div",
+                "style": {
+                  "font-size": "12px",
+                  "opacity": "0.85"
+                },
+                "txtContent": "[$tipocontenido]"
+              },
+              {
+                "elmType": "div",
+                "style": {
+                  "display": "flex",
+                  "justify-content": "space-between",
+                  "align-items": "center",
+                  "gap": "10px",
+                  "flex-wrap": "wrap"
+                },
+                "children": [
+                  {
+                    "elmType": "button",
+                    "style": {
+                      "padding": "8px 10px",
+                      "border": "1px solid #E6E6E6",
+                      "border-radius": "12px",
+                      "background-color": "white",
+                      "cursor": "pointer"
+                    },
+                    "txtContent": "Mostrar contenido",
+                    "customRowAction": {
+                      "action": "defaultClick"
+                    }
+                  },
+                  {
+                    "elmType": "div",
+                    "style": {
+                      "display": "=if([$estado]=='Pendiente','flex','none')",
+                      "gap": "10px",
+                      "flex-wrap": "wrap"
+                    },
+                    "children": [
+                      {
+                        "elmType": "button",
+                        "style": {
+                          "padding": "8px 12px",
+                          "border": "1px solid #107C10",
+                          "border-radius": "12px",
+                          "cursor": "pointer",
+                          "background-color": "#E6FFED",
+                          "font-weight": "650"
+                        },
+                        "txtContent": "Aprobar",
+                        "customRowAction": {
+                          "action": "executeFlow",
+                          "actionParams": "{\"id\":\"7ab5f2f7-0cc1-4fb8-a9e5-5e239ee6c787\"}"
+                        }
+                      },
+                      {
+                        "elmType": "button",
+                        "style": {
+                          "padding": "8px 12px",
+                          "border": "1px solid #D13438",
+                          "border-radius": "12px",
+                          "cursor": "pointer",
+                          "background-color": "#FFE6E6",
+                          "font-weight": "650"
+                        },
+                        "txtContent": "Rechazar",
+                        "customRowAction": {
+                          "action": "executeFlow",
+                          "actionParams": "{\"id\":\"43bf08fe-6cf4-4ead-a774-e37e2897ea04\"}"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
