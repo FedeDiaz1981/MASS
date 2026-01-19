@@ -1,170 +1,116 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/tile-formatting.schema.json",
-  "height": 210,
-  "width": 320,
-  "hideSelection": true,
-  "fillHorizontally": true,
-  "formatter": {
-    "elmType": "div",
-    "style": { "padding": "10px" },
-    "children": [
-      {
-        "elmType": "div",
-        "style": {
-          "border": "1px solid #E6E6E6",
-          "border-radius": "16px",
-          "box-shadow": "0 6px 18px rgba(0,0,0,0.08)",
-          "background-color": "white",
-          "overflow": "hidden",
-          "display": "flex",
-          "flex-direction": "column"
-        },
-        "children": [
-          {
-            "elmType": "div",
-            "style": {
-              "height": "6px",
-              "background-color": "=if([$estado]=='Pendiente','#FFB900', if([$estado]=='Aprobado','#107C10','#D13438'))"
-            }
-          },
-          {
-            "elmType": "div",
-            "style": {
-              "padding": "12px",
-              "display": "flex",
-              "flex-direction": "column",
-              "gap": "10px"
-            },
-            "children": [
-              {
-                "elmType": "div",
-                "style": { "display": "flex", "justify-content": "space-between", "gap": "10px" },
-                "children": [
-                  {
-                    "elmType": "div",
-                    "style": {
-                      "font-size": "16px",
-                      "font-weight": "700",
-                      "white-space": "nowrap",
-                      "overflow": "hidden",
-                      "text-overflow": "ellipsis"
-                    },
-                    "txtContent": "[$Title]"
-                  },
-                  {
-                    "elmType": "div",
-                    "style": {
-                      "padding": "4px 10px",
-                      "border-radius": "999px",
-                      "font-size": "12px",
-                      "font-weight": "600",
-                      "border": "1px solid #E6E6E6",
-                      "background-color": "=if([$estado]=='Pendiente','#FFF7E6', if([$estado]=='Aprobado','#E6FFED','#FFE6E6'))"
-                    },
-                    "txtContent": "[$estado]"
-                  }
-                ]
-              },
-              {
-                "elmType": "div",
-                "style": { "font-size": "12px", "opacity": "0.85" },
-                "txtContent": "[$tipocontenido]"
-              },
-
-              {
-                "elmType": "div",
-                "style": {
-                  "border": "1px solid #EFEFEF",
-                  "border-radius": "12px",
-                  "background-color": "#FAFAFA",
-                  "padding": "10px",
-                  "max-height": "80px",
-                  "overflow": "auto",
-                  "font-size": "12px"
-                },
-                "attributes": {
-                  "class": "sp-field-severity--good"
-                },
-                "children": [
-                  {
-                    "elmType": "div",
-                    "style": {
-                      "display": "=if([$Contenido] == '' , 'block', 'none')",
-                      "color": "#A19F9D"
-                    },
-                    "txtContent": "— Sin contenido —"
-                  },
-                  {
-                    "elmType": "div",
-                    "style": {
-                      "display": "=if([$Contenido] == '' , 'none', 'block')"
-                    },
-                    "attributes": {
-                      "class": "sp-richText"
-                    },
-                    "innerHTML": "[$Contenido]"
-                  }
-                ]
-              },
-
-              {
-                "elmType": "div",
-                "style": {
-                  "display": "flex",
-                  "justify-content": "space-between",
-                  "align-items": "center",
-                  "gap": "10px",
-                  "flex-wrap": "wrap"
-                },
-                "children": [
-                  {
-                    "elmType": "div",
-                    "style": {
-                      "display": "=if([$estado]=='Pendiente','flex','none')",
-                      "gap": "10px",
-                      "flex-wrap": "wrap"
-                    },
-                    "children": [
-                      {
-                        "elmType": "button",
-                        "style": {
-                          "padding": "8px 12px",
-                          "border": "1px solid #107C10",
-                          "border-radius": "12px",
-                          "cursor": "pointer",
-                          "background-color": "#E6FFED",
-                          "font-weight": "650"
-                        },
-                        "txtContent": "Aprobar",
-                        "customRowAction": {
-                          "action": "executeFlow",
-                          "actionParams": "{\"id\":\"7ab5f2f7-0cc1-4fb8-a9e5-5e239ee6c787\"}"
-                        }
-                      },
-                      {
-                        "elmType": "button",
-                        "style": {
-                          "padding": "8px 12px",
-                          "border": "1px solid #D13438",
-                          "border-radius": "12px",
-                          "cursor": "pointer",
-                          "background-color": "#FFE6E6",
-                          "font-weight": "650"
-                        },
-                        "txtContent": "Rechazar",
-                        "customRowAction": {
-                          "action": "executeFlow",
-                          "actionParams": "{\"id\":\"43bf08fe-6cf4-4ead-a774-e37e2897ea04\"}"
-                        }
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+  "elmType": "div",
+  "style": { "display": "flex", "gap": "8px", "flex-wrap": "wrap" },
+  "children": [
+    {
+      "elmType": "a",
+      "style": {
+        "display": "=if([$Link1Url] == '' , 'none', 'inline-flex')",
+        "align-items": "center",
+        "justify-content": "center",
+        "gap": "8px",
+        "padding": "8px 10px",
+        "border-radius": "12px",
+        "border": "1px solid #BBD7F0",
+        "background-color": "#E6F2FF",
+        "text-decoration": "none",
+        "font-size": "12px",
+        "font-weight": "700",
+        "color": "#0F172A"
+      },
+      "attributes": { "href": "[$Link1Url]", "target": "_blank" },
+      "children": [
+        { "elmType": "span", "txtContent": "🔗" },
+        { "elmType": "span", "txtContent": "=if([$Link1Titulo] == '', 'Abrir', [$Link1Titulo])" }
+      ]
+    },
+    {
+      "elmType": "a",
+      "style": {
+        "display": "=if([$Link2Url] == '' , 'none', 'inline-flex')",
+        "align-items": "center",
+        "justify-content": "center",
+        "gap": "8px",
+        "padding": "8px 10px",
+        "border-radius": "12px",
+        "border": "1px solid #E1DFDD",
+        "background-color": "#FFFFFF",
+        "text-decoration": "none",
+        "font-size": "12px",
+        "font-weight": "700",
+        "color": "#0F172A"
+      },
+      "attributes": { "href": "[$Link2Url]", "target": "_blank" },
+      "children": [
+        { "elmType": "span", "txtContent": "🔗" },
+        { "elmType": "span", "txtContent": "=if([$Link2Titulo] == '', 'Abrir', [$Link2Titulo])" }
+      ]
+    },
+    {
+      "elmType": "a",
+      "style": {
+        "display": "=if([$Link3Url] == '' , 'none', 'inline-flex')",
+        "align-items": "center",
+        "justify-content": "center",
+        "gap": "8px",
+        "padding": "8px 10px",
+        "border-radius": "12px",
+        "border": "1px solid #E1DFDD",
+        "background-color": "#FFFFFF",
+        "text-decoration": "none",
+        "font-size": "12px",
+        "font-weight": "700",
+        "color": "#0F172A"
+      },
+      "attributes": { "href": "[$Link3Url]", "target": "_blank" },
+      "children": [
+        { "elmType": "span", "txtContent": "🔗" },
+        { "elmType": "span", "txtContent": "=if([$Link3Titulo] == '', 'Abrir', [$Link3Titulo])" }
+      ]
+    },
+    {
+      "elmType": "a",
+      "style": {
+        "display": "=if([$Link4Url] == '' , 'none', 'inline-flex')",
+        "align-items": "center",
+        "justify-content": "center",
+        "gap": "8px",
+        "padding": "8px 10px",
+        "border-radius": "12px",
+        "border": "1px solid #E1DFDD",
+        "background-color": "#FFFFFF",
+        "text-decoration": "none",
+        "font-size": "12px",
+        "font-weight": "700",
+        "color": "#0F172A"
+      },
+      "attributes": { "href": "[$Link4Url]", "target": "_blank" },
+      "children": [
+        { "elmType": "span", "txtContent": "🔗" },
+        { "elmType": "span", "txtContent": "=if([$Link4Titulo] == '', 'Abrir', [$Link4Titulo])" }
+      ]
+    },
+    {
+      "elmType": "a",
+      "style": {
+        "display": "=if([$Link5Url] == '' , 'none', 'inline-flex')",
+        "align-items": "center",
+        "justify-content": "center",
+        "gap": "8px",
+        "padding": "8px 10px",
+        "border-radius": "12px",
+        "border": "1px solid #E1DFDD",
+        "background-color": "#FFFFFF",
+        "text-decoration": "none",
+        "font-size": "12px",
+        "font-weight": "700",
+        "color": "#0F172A"
+      },
+      "attributes": { "href": "[$Link5Url]", "target": "_blank" },
+      "children": [
+        { "elmType": "span", "txtContent": "🔗" },
+        { "elmType": "span", "txtContent": "=if([$Link5Titulo] == '', 'Abrir', [$Link5Titulo])" }
+      ]
+    }
+  ]
 }
