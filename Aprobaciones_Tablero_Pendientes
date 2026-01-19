@@ -5,7 +5,7 @@
     {
       "elmType": "a",
       "style": {
-        "display": "=if([$Link1Url] == '' , 'none', 'inline-flex')",
+        "display": "=if(first(skip(split([$Contenido], '\\n'), 0)) == '', 'none', 'inline-flex')",
         "align-items": "center",
         "justify-content": "center",
         "gap": "8px",
@@ -18,16 +18,17 @@
         "font-weight": "700",
         "color": "#0F172A"
       },
-      "attributes": { "href": "[$Link1Url]", "target": "_blank" },
+      "attributes": { "href": "=split(first(skip(split([$Contenido], '\\n'), 0)), '||')[1]", "target": "_blank" },
       "children": [
         { "elmType": "span", "txtContent": "🔗" },
-        { "elmType": "span", "txtContent": "=if([$Link1Titulo] == '', 'Abrir', [$Link1Titulo])" }
+        { "elmType": "span", "txtContent": "=split(first(skip(split([$Contenido], '\\n'), 0)), '||')[0]" }
       ]
     },
+
     {
       "elmType": "a",
       "style": {
-        "display": "=if([$Link2Url] == '' , 'none', 'inline-flex')",
+        "display": "=if(first(skip(split([$Contenido], '\\n'), 1)) == '', 'none', 'inline-flex')",
         "align-items": "center",
         "justify-content": "center",
         "gap": "8px",
@@ -40,16 +41,17 @@
         "font-weight": "700",
         "color": "#0F172A"
       },
-      "attributes": { "href": "[$Link2Url]", "target": "_blank" },
+      "attributes": { "href": "=split(first(skip(split([$Contenido], '\\n'), 1)), '||')[1]", "target": "_blank" },
       "children": [
         { "elmType": "span", "txtContent": "🔗" },
-        { "elmType": "span", "txtContent": "=if([$Link2Titulo] == '', 'Abrir', [$Link2Titulo])" }
+        { "elmType": "span", "txtContent": "=split(first(skip(split([$Contenido], '\\n'), 1)), '||')[0]" }
       ]
     },
+
     {
       "elmType": "a",
       "style": {
-        "display": "=if([$Link3Url] == '' , 'none', 'inline-flex')",
+        "display": "=if(first(skip(split([$Contenido], '\\n'), 2)) == '', 'none', 'inline-flex')",
         "align-items": "center",
         "justify-content": "center",
         "gap": "8px",
@@ -62,16 +64,17 @@
         "font-weight": "700",
         "color": "#0F172A"
       },
-      "attributes": { "href": "[$Link3Url]", "target": "_blank" },
+      "attributes": { "href": "=split(first(skip(split([$Contenido], '\\n'), 2)), '||')[1]", "target": "_blank" },
       "children": [
         { "elmType": "span", "txtContent": "🔗" },
-        { "elmType": "span", "txtContent": "=if([$Link3Titulo] == '', 'Abrir', [$Link3Titulo])" }
+        { "elmType": "span", "txtContent": "=split(first(skip(split([$Contenido], '\\n'), 2)), '||')[0]" }
       ]
     },
+
     {
       "elmType": "a",
       "style": {
-        "display": "=if([$Link4Url] == '' , 'none', 'inline-flex')",
+        "display": "=if(first(skip(split([$Contenido], '\\n'), 3)) == '', 'none', 'inline-flex')",
         "align-items": "center",
         "justify-content": "center",
         "gap": "8px",
@@ -84,16 +87,17 @@
         "font-weight": "700",
         "color": "#0F172A"
       },
-      "attributes": { "href": "[$Link4Url]", "target": "_blank" },
+      "attributes": { "href": "=split(first(skip(split([$Contenido], '\\n'), 3)), '||')[1]", "target": "_blank" },
       "children": [
         { "elmType": "span", "txtContent": "🔗" },
-        { "elmType": "span", "txtContent": "=if([$Link4Titulo] == '', 'Abrir', [$Link4Titulo])" }
+        { "elmType": "span", "txtContent": "=split(first(skip(split([$Contenido], '\\n'), 3)), '||')[0]" }
       ]
     },
+
     {
       "elmType": "a",
       "style": {
-        "display": "=if([$Link5Url] == '' , 'none', 'inline-flex')",
+        "display": "=if(first(skip(split([$Contenido], '\\n'), 4)) == '', 'none', 'inline-flex')",
         "align-items": "center",
         "justify-content": "center",
         "gap": "8px",
@@ -106,10 +110,240 @@
         "font-weight": "700",
         "color": "#0F172A"
       },
-      "attributes": { "href": "[$Link5Url]", "target": "_blank" },
+      "attributes": { "href": "=split(first(skip(split([$Contenido], '\\n'), 4)), '||')[1]", "target": "_blank" },
       "children": [
         { "elmType": "span", "txtContent": "🔗" },
-        { "elmType": "span", "txtContent": "=if([$Link5Titulo] == '', 'Abrir', [$Link5Titulo])" }
+        { "elmType": "span", "txtContent": "=split(first(skip(split([$Contenido], '\\n'), 4)), '||')[0]" }
+      ]
+    },
+
+    {
+      "elmType": "a",
+      "style": {
+        "display": "=if(first(skip(split([$Contenido], '\\n'), 5)) == '', 'none', 'inline-flex')",
+        "align-items": "center",
+        "justify-content": "center",
+        "gap": "8px",
+        "padding": "8px 10px",
+        "border-radius": "12px",
+        "border": "1px solid #E1DFDD",
+        "background-color": "#FFFFFF",
+        "text-decoration": "none",
+        "font-size": "12px",
+        "font-weight": "700",
+        "color": "#0F172A"
+      },
+      "attributes": { "href": "=split(first(skip(split([$Contenido], '\\n'), 5)), '||')[1]", "target": "_blank" },
+      "children": [
+        { "elmType": "span", "txtContent": "🔗" },
+        { "elmType": "span", "txtContent": "=split(first(skip(split([$Contenido], '\\n'), 5)), '||')[0]" }
+      ]
+    },
+
+    {
+      "elmType": "a",
+      "style": {
+        "display": "=if(first(skip(split([$Contenido], '\\n'), 6)) == '', 'none', 'inline-flex')",
+        "align-items": "center",
+        "justify-content": "center",
+        "gap": "8px",
+        "padding": "8px 10px",
+        "border-radius": "12px",
+        "border": "1px solid #E1DFDD",
+        "background-color": "#FFFFFF",
+        "text-decoration": "none",
+        "font-size": "12px",
+        "font-weight": "700",
+        "color": "#0F172A"
+      },
+      "attributes": { "href": "=split(first(skip(split([$Contenido], '\\n'), 6)), '||')[1]", "target": "_blank" },
+      "children": [
+        { "elmType": "span", "txtContent": "🔗" },
+        { "elmType": "span", "txtContent": "=split(first(skip(split([$Contenido], '\\n'), 6)), '||')[0]" }
+      ]
+    },
+
+    {
+      "elmType": "a",
+      "style": {
+        "display": "=if(first(skip(split([$Contenido], '\\n'), 7)) == '', 'none', 'inline-flex')",
+        "align-items": "center",
+        "justify-content": "center",
+        "gap": "8px",
+        "padding": "8px 10px",
+        "border-radius": "12px",
+        "border": "1px solid #E1DFDD",
+        "background-color": "#FFFFFF",
+        "text-decoration": "none",
+        "font-size": "12px",
+        "font-weight": "700",
+        "color": "#0F172A"
+      },
+      "attributes": { "href": "=split(first(skip(split([$Contenido], '\\n'), 7)), '||')[1]", "target": "_blank" },
+      "children": [
+        { "elmType": "span", "txtContent": "🔗" },
+        { "elmType": "span", "txtContent": "=split(first(skip(split([$Contenido], '\\n'), 7)), '||')[0]" }
+      ]
+    },
+
+    {
+      "elmType": "a",
+      "style": {
+        "display": "=if(first(skip(split([$Contenido], '\\n'), 8)) == '', 'none', 'inline-flex')",
+        "align-items": "center",
+        "justify-content": "center",
+        "gap": "8px",
+        "padding": "8px 10px",
+        "border-radius": "12px",
+        "border": "1px solid #E1DFDD",
+        "background-color": "#FFFFFF",
+        "text-decoration": "none",
+        "font-size": "12px",
+        "font-weight": "700",
+        "color": "#0F172A"
+      },
+      "attributes": { "href": "=split(first(skip(split([$Contenido], '\\n'), 8)), '||')[1]", "target": "_blank" },
+      "children": [
+        { "elmType": "span", "txtContent": "🔗" },
+        { "elmType": "span", "txtContent": "=split(first(skip(split([$Contenido], '\\n'), 8)), '||')[0]" }
+      ]
+    },
+
+    {
+      "elmType": "a",
+      "style": {
+        "display": "=if(first(skip(split([$Contenido], '\\n'), 9)) == '', 'none', 'inline-flex')",
+        "align-items": "center",
+        "justify-content": "center",
+        "gap": "8px",
+        "padding": "8px 10px",
+        "border-radius": "12px",
+        "border": "1px solid #E1DFDD",
+        "background-color": "#FFFFFF",
+        "text-decoration": "none",
+        "font-size": "12px",
+        "font-weight": "700",
+        "color": "#0F172A"
+      },
+      "attributes": { "href": "=split(first(skip(split([$Contenido], '\\n'), 9)), '||')[1]", "target": "_blank" },
+      "children": [
+        { "elmType": "span", "txtContent": "🔗" },
+        { "elmType": "span", "txtContent": "=split(first(skip(split([$Contenido], '\\n'), 9)), '||')[0]" }
+      ]
+    },
+
+    {
+      "elmType": "a",
+      "style": {
+        "display": "=if(first(skip(split([$Contenido], '\\n'), 10)) == '', 'none', 'inline-flex')",
+        "align-items": "center",
+        "justify-content": "center",
+        "gap": "8px",
+        "padding": "8px 10px",
+        "border-radius": "12px",
+        "border": "1px solid #E1DFDD",
+        "background-color": "#FFFFFF",
+        "text-decoration": "none",
+        "font-size": "12px",
+        "font-weight": "700",
+        "color": "#0F172A"
+      },
+      "attributes": { "href": "=split(first(skip(split([$Contenido], '\\n'), 10)), '||')[1]", "target": "_blank" },
+      "children": [
+        { "elmType": "span", "txtContent": "🔗" },
+        { "elmType": "span", "txtContent": "=split(first(skip(split([$Contenido], '\\n'), 10)), '||')[0]" }
+      ]
+    },
+
+    {
+      "elmType": "a",
+      "style": {
+        "display": "=if(first(skip(split([$Contenido], '\\n'), 11)) == '', 'none', 'inline-flex')",
+        "align-items": "center",
+        "justify-content": "center",
+        "gap": "8px",
+        "padding": "8px 10px",
+        "border-radius": "12px",
+        "border": "1px solid #E1DFDD",
+        "background-color": "#FFFFFF",
+        "text-decoration": "none",
+        "font-size": "12px",
+        "font-weight": "700",
+        "color": "#0F172A"
+      },
+      "attributes": { "href": "=split(first(skip(split([$Contenido], '\\n'), 11)), '||')[1]", "target": "_blank" },
+      "children": [
+        { "elmType": "span", "txtContent": "🔗" },
+        { "elmType": "span", "txtContent": "=split(first(skip(split([$Contenido], '\\n'), 11)), '||')[0]" }
+      ]
+    },
+
+    {
+      "elmType": "a",
+      "style": {
+        "display": "=if(first(skip(split([$Contenido], '\\n'), 12)) == '', 'none', 'inline-flex')",
+        "align-items": "center",
+        "justify-content": "center",
+        "gap": "8px",
+        "padding": "8px 10px",
+        "border-radius": "12px",
+        "border": "1px solid #E1DFDD",
+        "background-color": "#FFFFFF",
+        "text-decoration": "none",
+        "font-size": "12px",
+        "font-weight": "700",
+        "color": "#0F172A"
+      },
+      "attributes": { "href": "=split(first(skip(split([$Contenido], '\\n'), 12)), '||')[1]", "target": "_blank" },
+      "children": [
+        { "elmType": "span", "txtContent": "🔗" },
+        { "elmType": "span", "txtContent": "=split(first(skip(split([$Contenido], '\\n'), 12)), '||')[0]" }
+      ]
+    },
+
+    {
+      "elmType": "a",
+      "style": {
+        "display": "=if(first(skip(split([$Contenido], '\\n'), 13)) == '', 'none', 'inline-flex')",
+        "align-items": "center",
+        "justify-content": "center",
+        "gap": "8px",
+        "padding": "8px 10px",
+        "border-radius": "12px",
+        "border": "1px solid #E1DFDD",
+        "background-color": "#FFFFFF",
+        "text-decoration": "none",
+        "font-size": "12px",
+        "font-weight": "700",
+        "color": "#0F172A"
+      },
+      "attributes": { "href": "=split(first(skip(split([$Contenido], '\\n'), 13)), '||')[1]", "target": "_blank" },
+      "children": [
+        { "elmType": "span", "txtContent": "🔗" },
+        { "elmType": "span", "txtContent": "=split(first(skip(split([$Contenido], '\\n'), 13)), '||')[0]" }
+      ]
+    },
+
+    {
+      "elmType": "a",
+      "style": {
+        "display": "=if(first(skip(split([$Contenido], '\\n'), 14)) == '', 'none', 'inline-flex')",
+        "align-items": "center",
+        "justify-content": "center",
+        "gap": "8px",
+        "padding": "8px 10px",
+        "border-radius": "12px",
+        "border": "1px solid #E1DFDD",
+        "background-color": "#FFFFFF",
+        "text-decoration": "none",
+        "font-size": "12px",
+        "font-weight": "700",
+        "color": "#0F172A"
+      },
+      "attributes": { "href": "=split(first(skip(split([$Contenido], '\\n'), 14)), '||')[1]", "target": "_blank" },
+      "children": [
+        { "elmType": "span", "txtContent": "🔗" },
+        { "elmType": "span", "txtContent": "=split(first(skip(split([$Contenido], '\\n'), 14)), '||')[0]" }
       ]
     }
   ]
