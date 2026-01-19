@@ -6,9 +6,7 @@
   "fillHorizontally": true,
   "formatter": {
     "elmType": "div",
-    "style": {
-      "padding": "10px"
-    },
+    "style": { "padding": "10px" },
     "children": [
       {
         "elmType": "div",
@@ -40,11 +38,7 @@
             "children": [
               {
                 "elmType": "div",
-                "style": {
-                  "display": "flex",
-                  "justify-content": "space-between",
-                  "gap": "10px"
-                },
+                "style": { "display": "flex", "justify-content": "space-between", "gap": "10px" },
                 "children": [
                   {
                     "elmType": "div",
@@ -73,12 +67,46 @@
               },
               {
                 "elmType": "div",
-                "style": {
-                  "font-size": "12px",
-                  "opacity": "0.85"
-                },
+                "style": { "font-size": "12px", "opacity": "0.85" },
                 "txtContent": "[$tipocontenido]"
               },
+
+              {
+                "elmType": "div",
+                "style": {
+                  "border": "1px solid #EFEFEF",
+                  "border-radius": "12px",
+                  "background-color": "#FAFAFA",
+                  "padding": "10px",
+                  "max-height": "80px",
+                  "overflow": "auto",
+                  "font-size": "12px"
+                },
+                "attributes": {
+                  "class": "sp-field-severity--good"
+                },
+                "children": [
+                  {
+                    "elmType": "div",
+                    "style": {
+                      "display": "=if([$Contenido] == '' , 'block', 'none')",
+                      "color": "#A19F9D"
+                    },
+                    "txtContent": "— Sin contenido —"
+                  },
+                  {
+                    "elmType": "div",
+                    "style": {
+                      "display": "=if([$Contenido] == '' , 'none', 'block')"
+                    },
+                    "attributes": {
+                      "class": "sp-richText"
+                    },
+                    "innerHTML": "[$Contenido]"
+                  }
+                ]
+              },
+
               {
                 "elmType": "div",
                 "style": {
@@ -89,20 +117,6 @@
                   "flex-wrap": "wrap"
                 },
                 "children": [
-                  {
-                    "elmType": "button",
-                    "style": {
-                      "padding": "8px 10px",
-                      "border": "1px solid #E6E6E6",
-                      "border-radius": "12px",
-                      "background-color": "white",
-                      "cursor": "pointer"
-                    },
-                    "txtContent": "Mostrar contenido",
-                    "customRowAction": {
-                      "action": "defaultClick"
-                    }
-                  },
                   {
                     "elmType": "div",
                     "style": {
