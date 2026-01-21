@@ -1,194 +1,132 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/tile-formatting.schema.json",
-  "height": 260,
-  "width": 380,
+  "height": 55,
+  "width": 900,
   "hideSelection": true,
-  "fillHorizontally": true,
+  "fillHorizontally": false,
   "formatter": {
     "elmType": "div",
-    "style": { "padding": "10px" },
+    "style": {
+      "width": "100%",
+      "padding": "0px",
+      "box-sizing": "border-box"
+    },
     "children": [
       {
         "elmType": "div",
         "style": {
-          "border": "1px solid #E6E6E6",
-          "border-radius": "16px",
-          "box-shadow": "0 6px 18px rgba(0,0,0,0.08)",
-          "background-color": "white",
-          "overflow": "hidden",
-          "display": "flex",
-          "flex-direction": "column",
-          "cursor": "default"
+          "display": "=if([$esdocumento] == true, 'block', if([$escabecera] == true, 'block', if([$esleccion] == true, 'block', 'inline-block')))",
+          "vertical-align": "top",
+          "width": "=if([$esdocumento] == true, '100%', if([$escabecera] == true, '100%', if([$esleccion] == true, '100%', '220px')))",
+          "box-sizing": "border-box",
+          "margin-top": "=if([$esdocumento] == true, '0px', if([$escabecera] == true, '0px', if([$esleccion] == true, '-26px', '-32px')))",
+          "margin-left": "=if([$esdocumento] == true, '0px', if([$escabecera] == true, '0px', if([$esleccion] == true, '28px', '52px')))"
         },
         "children": [
-          { "elmType": "div", "style": { "height": "6px", "background-color": "#0078D4" } },
           {
             "elmType": "div",
             "style": {
-              "padding": "12px",
+              "width": "100%",
+              "box-sizing": "border-box",
+              "border": "0px",
+              "border-radius": "=if([$escabecera] == true, '12px', if([$esdocumento] == true, '12px', '0px'))",
+              "padding": "=if([$escabecera] == true, '4px 6px', if([$esdocumento] == true, '4px 6px', '0px'))",
+              "background-color": "=if([$escabecera] == true, '#E6F2FF', if([$esdocumento] == true, '#E6F2FF', 'transparent'))",
+              "box-shadow": "none",
               "display": "flex",
               "flex-direction": "column",
-              "gap": "10px"
+              "gap": "0px"
             },
             "children": [
               {
                 "elmType": "div",
                 "style": {
+                  "display": "=if([$escabecera] == true, 'block', if([$esleccion] == true, 'block', if([$esdocumento] == true, 'inline', 'none')))",
                   "font-size": "16px",
-                  "font-weight": "800",
-                  "line-height": "1.25",
-                  "overflow": "hidden",
-                  "display": "-webkit-box",
-                  "-webkit-box-orient": "vertical",
-                  "-webkit-line-clamp": "2"
+                  "line-height": "18px",
+                  "font-weight": "700",
+                  "color": "#111827"
                 },
                 "txtContent": "[$Title]"
               },
               {
                 "elmType": "div",
-                "style": { "display": "flex", "gap": "8px", "align-items": "center", "flex-wrap": "wrap" },
+                "style": {
+                  "display": "=if([$escabecera] == true, 'flex', 'none')",
+                  "gap": "6px"
+                },
                 "children": [
-                  { "elmType": "span", "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" }, "txtContent": "Categoría:" },
                   {
                     "elmType": "span",
                     "style": {
-                      "display": "=if([$categoria] == '' , 'none', 'inline-flex')",
-                      "padding": "2px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #E1DFDD",
-                      "background-color": "#F3F2F1",
                       "font-size": "12px",
-                      "font-weight": "800",
-                      "color": "#111827",
-                      "max-width": "260px",
-                      "white-space": "nowrap",
-                      "overflow": "hidden",
-                      "text-overflow": "ellipsis"
+                      "line-height": "14px",
+                      "color": "#605E5C",
+                      "font-weight": "700"
                     },
-                    "txtContent": "[$categoria]"
+                    "txtContent": "Código:"
                   },
                   {
                     "elmType": "span",
                     "style": {
-                      "display": "=if([$categoria] == '' , 'inline-flex', 'none')",
-                      "padding": "2px 10px",
-                      "border-radius": "999px",
-                      "border": "1px solid #E1DFDD",
-                      "background-color": "#F3F2F1",
                       "font-size": "12px",
-                      "font-weight": "800",
-                      "color": "#111827"
+                      "line-height": "14px",
+                      "color": "#605E5C",
+                      "font-weight": "600"
                     },
-                    "txtContent": "—"
+                    "txtContent": "[$codigo]"
                   }
                 ]
               },
               {
                 "elmType": "div",
                 "style": {
-                  "border": "1px solid #EFEFEF",
-                  "border-radius": "12px",
-                  "background-color": "#FAFAFA",
-                  "padding": "10px",
-                  "display": "flex",
-                  "flex-direction": "column",
-                  "gap": "8px"
+                  "display": "=if([$esdocumento] == true, 'flex', 'none')",
+                  "gap": "6px"
                 },
                 "children": [
                   {
-                    "elmType": "div",
-                    "style": { "display": "flex", "gap": "10px", "flex-wrap": "wrap" },
-                    "children": [
-                      {
-                        "elmType": "div",
-                        "style": { "display": "=if([$Department.lookupValue] == '', 'none', 'flex')", "gap": "6px", "align-items": "center" },
-                        "children": [
-                          { "elmType": "span", "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" }, "txtContent": "Depto:" },
-                          { "elmType": "span", "style": { "font-size": "12px", "font-weight": "800", "color": "#323130" }, "txtContent": "[$Department.lookupValue]" }
-                        ]
-                      },
-                      {
-                        "elmType": "div",
-                        "style": { "display": "=if([$Technology.lookupValue] == '', 'none', 'flex')", "gap": "6px", "align-items": "center" },
-                        "children": [
-                          { "elmType": "span", "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" }, "txtContent": "Tec:" },
-                          { "elmType": "span", "style": { "font-size": "12px", "font-weight": "800", "color": "#323130" }, "txtContent": "[$Technology.lookupValue]" }
-                        ]
-                      },
-                      {
-                        "elmType": "div",
-                        "style": { "display": "=if([$Line.lookupValue] == '', 'none', 'flex')", "gap": "6px", "align-items": "center" },
-                        "children": [
-                          { "elmType": "span", "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" }, "txtContent": "Línea:" },
-                          { "elmType": "span", "style": { "font-size": "12px", "font-weight": "800", "color": "#323130" }, "txtContent": "[$Line.lookupValue]" }
-                        ]
-                      },
-                      {
-                        "elmType": "div",
-                        "style": { "display": "=if([$Equipment.lookupValue] == '', 'none', 'flex')", "gap": "6px", "align-items": "center" },
-                        "children": [
-                          { "elmType": "span", "style": { "font-size": "12px", "color": "#605E5C", "font-weight": "700" }, "txtContent": "Equipo:" },
-                          { "elmType": "span", "style": { "font-size": "12px", "font-weight": "800", "color": "#323130" }, "txtContent": "[$Equipment.lookupValue]" }
-                        ]
-                      }
-                    ]
+                    "elmType": "span",
+                    "style": {
+                      "font-size": "12px",
+                      "line-height": "14px",
+                      "color": "#605E5C",
+                      "font-weight": "600"
+                    },
+                    "txtContent": "[$tipodocumento]"
                   }
                 ]
               },
               {
-                "elmType": "div",
-                "style": { "display": "flex", "gap": "10px", "flex-wrap": "wrap" },
+                "elmType": "a",
+                "attributes": {
+                  "href": "[$url]",
+                  "target": "_blank"
+                },
+                "style": {
+                  "display": "=if([$escabecera] == true, 'none', if([$esleccion] == true, 'none', 'inline-flex'))",
+                  "align-items": "center",
+                  "gap": "8px",
+                  "padding": "=if([$esdocumento] == true, '0px', '6px 10px')",
+                  "border-radius": "=if([$esdocumento] == true, '0px', '10px')",
+                  "border": "=if([$esdocumento] == true, '0px', '1px solid #BBD7F0')",
+                  "background-color": "=if([$esdocumento] == true, 'transparent', '#E6F2FF')",
+                  "text-decoration": "none",
+                  "font-size": "12px",
+                  "line-height": "14px",
+                  "font-weight": "800",
+                  "color": "#0F172A",
+                  "width": "100%",
+                  "box-sizing": "border-box"
+                },
                 "children": [
                   {
-                    "elmType": "a",
-                    "style": {
-                      "display": "=if([$Lecciones], 'inline-flex', 'none')",
-                      "align-items": "center",
-                      "justify-content": "center",
-                      "gap": "8px",
-                      "padding": "10px 12px",
-                      "border-radius": "12px",
-                      "border": "1px solid #BBD7F0",
-                      "background-color": "#E6F2FF",
-                      "cursor": "pointer",
-                      "font-size": "13px",
-                      "font-weight": "900",
-                      "color": "#0F172A",
-                      "text-decoration": "none",
-                      "width": "fit-content"
-                    },
-                    "attributes": { "href": "[$url]", "target": "_blank" },
-                    "children": [
-                      { "elmType": "span", "txtContent": "🔎" },
-                      { "elmType": "span", "txtContent": "Abrir" }
-                    ]
+                    "elmType": "span",
+                    "txtContent": "🔗"
                   },
                   {
-                    "elmType": "a",
-                    "style": {
-                      "display": "=if([$Lecciones], 'none', 'inline-flex')",
-                      "align-items": "center",
-                      "justify-content": "center",
-                      "gap": "8px",
-                      "padding": "10px 12px",
-                      "border-radius": "12px",
-                      "border": "1px solid #C8C6C4",
-                      "background-color": "#FFFFFF",
-                      "cursor": "pointer",
-                      "font-size": "13px",
-                      "font-weight": "900",
-                      "color": "#0F172A",
-                      "text-decoration": "none",
-                      "width": "fit-content"
-                    },
-                    "attributes": {
-                      "href": "=if(indexOf([$url], '?') > -1, concat([$url], '&download=1'), concat([$url], '?download=1'))",
-                      "target": "_blank"
-                    },
-                    "children": [
-                      { "elmType": "span", "txtContent": "🔎" },
-                      { "elmType": "span", "txtContent": "Abrir" }
-                    ]
+                    "elmType": "span",
+                    "txtContent": "[$url.desc]"
                   }
                 ]
               }
