@@ -1,0 +1,127 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/tile-formatting.schema.json",
+  "height": 70,
+  "width": 900,
+  "hideSelection": true,
+  "fillHorizontally": false,
+  "formatter": {
+    "elmType": "div",
+    "style": {
+      "width": "100%",
+      "box-sizing": "border-box",
+      "padding": "0px"
+    },
+    "children": [
+      {
+        "elmType": "div",
+        "style": {
+          "display": "=if([$escabecera] == true, 'block', if([$esleccion] == true, 'block', 'inline-block'))",
+          "width": "=if([$escabecera] == true, '100%', if([$esleccion] == true, '100%', '30%'))",
+          "vertical-align": "top",
+          "box-sizing": "border-box",
+          "padding": "0px",
+          "margin-left": "=if([$esdocumento] == true, '0px', if([$escabecera] == true, '0px', if([$esleccion] == true, '16px', '32px')))",
+          "margin-top": "=if([$escabecera] == true, '0px', if([$esdocumento] == true, '0px', if([$esleccion] == true, '-22px', '-22px')))"
+        },
+        "children": [
+          {
+            "elmType": "div",
+            "style": {
+              "box-sizing": "border-box",
+              "border-radius": "=if([$escabecera] == true, '12px', if([$esleccion] == true, '0px', if([$esdocumento] == true, '12px', '10px')))",
+              "background-color": "=if([$escabecera] == true, '#2D4059', if([$esleccion] == true, 'transparent', if([$esdocumento] == true, '#FFD460', 'white')))",
+              "border": "=if([$esdocumento] == true, '1px solid #F07B3F', if([$escabecera] == true, '0px', if([$esleccion] == true, '0px', '1px solid #F07B3F')))",
+              "padding": "=if([$escabecera] == true, '6px 10px', if([$esleccion] == true, '0px', if([$esdocumento] == true, '6px 10px', '4px 8px')))",
+              "display": "flex",
+              "flex-direction": "column",
+              "gap": "2px"
+            },
+            "children": [
+              {
+                "elmType": "div",
+                "style": {
+                  "display": "=if([$escabecera] == true, 'block', if([$esleccion] == true, 'block', if([$esdocumento] == true, 'block', 'none')))",
+                  "font-size": "=if([$escabecera] == true, '21px', if([$esleccion] == true, '18px', '18px'))",
+                  "font-weight": "=if([$escabecera] == true, '700', if([$esleccion] == true, '600', '700'))",
+                  "color": "=if([$escabecera] == true, 'white', if([$esdocumento] == true, '#2D4059', '#2D4059'))",
+                  "line-height": "22px"
+                },
+                "txtContent": "[$Title]"
+              },
+              {
+                "elmType": "div",
+                "style": {
+                  "display": "=if([$escabecera] == true, 'flex', 'none')",
+                  "gap": "8px"
+                },
+                "children": [
+                  {
+                    "elmType": "span",
+                    "style": {
+                      "font-size": "17px",
+                      "line-height": "18px",
+                      "color": "#FFD460",
+                      "font-weight": "700"
+                    },
+                    "txtContent": "Código:"
+                  },
+                  {
+                    "elmType": "span",
+                    "style": {
+                      "font-size": "17px",
+                      "line-height": "18px",
+                      "color": "white",
+                      "font-weight": "600"
+                    },
+                    "txtContent": "[$codigo]"
+                  }
+                ]
+              },
+              {
+                "elmType": "div",
+                "style": {
+                  "display": "=if([$esdocumento] == true, 'block', 'none')",
+                  "font-size": "17px",
+                  "line-height": "18px",
+                  "color": "#2D4059",
+                  "font-weight": "700"
+                },
+                "txtContent": "[$tipodocumento]"
+              },
+              {
+                "elmType": "a",
+                "attributes": {
+                  "href": "[$url]",
+                  "target": "_blank"
+                },
+                "style": {
+                  "display": "=if([$escabecera] == true, 'none', if([$esleccion] == true, 'none', 'inline-flex'))",
+                  "align-items": "center",
+                  "gap": "8px",
+                  "text-decoration": "none",
+                  "font-size": "16px",
+                  "font-weight": "700",
+                  "color": "=if([$esdocumento] == true, '#2D4059', 'white')",
+                  "padding": "=if([$esdocumento] == true, '2px 0px', '6px 10px')",
+                  "border": "=if([$esdocumento] == true, '0px', '1px solid #EA5455')",
+                  "border-radius": "=if([$esdocumento] == true, '0px', '10px')",
+                  "background-color": "=if([$esdocumento] == true, 'transparent', '#EA5455')"
+                },
+                "children": [
+                  {
+                    "elmType": "span",
+                    "txtContent": "🔗"
+                  },
+                  {
+                    "elmType": "span",
+                    "txtContent": "[$url.desc]"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
