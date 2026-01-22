@@ -1,0 +1,112 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/tile-formatting.schema.json",
+  "height": 180,
+  "width": 300,
+  "hideSelection": true,
+  "fillHorizontally": false,
+  "formatter": {
+    "elmType": "div",
+    "style": {
+      "width": "100%",
+      "box-sizing": "border-box",
+      "padding": "0px"
+    },
+    "children": [
+      {
+        "elmType": "div",
+        "style": {
+          "display": "inline-block",
+          "width": "100%",
+          "vertical-align": "top",
+          "box-sizing": "border-box",
+          "padding": "6px",
+          "margin": "0px"
+        },
+        "children": [
+          {
+            "elmType": "div",
+            "style": {
+              "box-sizing": "border-box",
+              "border-radius": "12px",
+              "background-color": "#FBFFF1",
+              "border": "2px solid #3066BE",
+              "padding": "12px",
+              "display": "flex",
+              "flex-direction": "column",
+              "gap": "10px",
+              "min-height": "145px"
+            },
+            "children": [
+              {
+                "elmType": "div",
+                "style": {
+                  "font-size": "18px",
+                  "font-weight": "800",
+                  "color": "#090C9B",
+                  "line-height": "22px",
+                  "white-space": "nowrap",
+                  "overflow": "hidden",
+                  "text-overflow": "ellipsis"
+                },
+                "txtContent": "[$Title]"
+              },
+              {
+                "elmType": "div",
+                "style": {
+                  "font-size": "14px",
+                  "font-weight": "700",
+                  "color": "#3C3744",
+                  "line-height": "18px",
+                  "white-space": "nowrap",
+                  "overflow": "hidden",
+                  "text-overflow": "ellipsis"
+                },
+                "txtContent": "[$tipodocumento]"
+              },
+              {
+                "elmType": "a",
+                "attributes": {
+                  "href": "[$url]",
+                  "target": "_blank"
+                },
+                "style": {
+                  "display": "inline-flex",
+                  "align-items": "center",
+                  "gap": "8px",
+                  "text-decoration": "none",
+                  "font-size": "14px",
+                  "font-weight": "800",
+                  "color": "#FBFFF1",
+                  "padding": "10px 12px",
+                  "border": "1px solid #3066BE",
+                  "border-radius": "10px",
+                  "background-color": "#090C9B",
+                  "box-sizing": "border-box",
+                  "width": "100%",
+                  "white-space": "nowrap",
+                  "overflow": "hidden",
+                  "text-overflow": "ellipsis"
+                },
+                "children": [
+                  {
+                    "elmType": "span",
+                    "txtContent": "🔗"
+                  },
+                  {
+                    "elmType": "span",
+                    "style": {
+                      "white-space": "nowrap",
+                      "overflow": "hidden",
+                      "text-overflow": "ellipsis"
+                    },
+                    "txtContent": "Abrir"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
