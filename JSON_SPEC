@@ -1,0 +1,75 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "width": 420,
+  "height": 120,
+  "padding": 10,
+  "signals": [
+    {
+      "name": "selectedPart",
+      "value": null,
+      "on": [
+        { "events": "@zone:click", "update": "datum.part" },
+        { "events": "dblclick", "update": "null" }
+      ]
+    }
+  ],
+  "data": [
+    {
+      "name": "zones",
+      "values": [
+        { "part": "A", "label": "Motor (A)", "x": 10, "y": 10, "w": 130, "h": 70 },
+        { "part": "B", "label": "Banda (B)", "x": 150, "y": 10, "w": 130, "h": 70 },
+        { "part": "C", "label": "Sensor (C)", "x": 290, "y": 10, "w": 130, "h": 70 }
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "name": "zone",
+      "from": { "data": "zones" },
+      "encode": {
+        "enter": {
+          "x": { "field": "x" },
+          "y": { "field": "y" },
+          "width": { "field": "w" },
+          "height": { "field": "h" },
+          "cornerRadius": { "value": 10 },
+          "strokeWidth": { "value": 2 },
+          "cursor": { "value": "pointer" }
+        },
+        "update": {
+          "fill": [
+            { "test": "selectedPart === datum.part", "value": "#1f77b4" },
+            { "value": "#e6e6e6" }
+          ],
+          "stroke": [
+            { "test": "selectedPart === datum.part", "value": "#1f77b4" },
+            { "value": "#666" }
+          ]
+        },
+        "hover": { "fill": { "value": "#cfcfcf" } }
+      }
+    },
+    {
+      "type": "text",
+      "from": { "data": "zones" },
+      "encode": {
+        "enter": {
+          "x": { "signal": "datum.x + datum.w/2" },
+          "y": { "signal": "datum.y + datum.h/2" },
+          "align": { "value": "center" },
+          "baseline": { "value": "middle" },
+          "fontSize": { "value": 16 },
+          "text": { "field": "label" }
+        },
+        "update": {
+          "fill": [
+            { "test": "selectedPart === datum.part", "value": "white" },
+            { "value": "#111" }
+          ]
+        }
+      }
+    }
+  ]
+}
