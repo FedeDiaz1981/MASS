@@ -3,48 +3,50 @@
   "width": 420,
   "height": 120,
   "padding": 10,
-  "signals": [
+  "data": [
     {
-      "name": "selectedPart",
-      "value": null,
-      "on": [
-        { "events": "@zone:click", "update": "datum.part" },
-        { "events": "dblclick", "update": "null" }
+      "name": "dataset",
+      "transform": [
+        {
+          "type": "window",
+          "ops": ["row_number"],
+          "as": ["idx"]
+        }
       ]
     }
   ],
-  "data": [
+  "signals": [
     {
-      "name": "zones",
-      "values": [
-        { "part": "A", "label": "Motor (A)", "x": 10, "y": 10, "w": 130, "h": 70 },
-        { "part": "B", "label": "Banda (B)", "x": 150, "y": 10, "w": 130, "h": 70 },
-        { "part": "C", "label": "Sensor (C)", "x": 290, "y": 10, "w": 130, "h": 70 }
+      "name": "selected",
+      "value": null,
+      "on": [
+        { "events": "@btn:click", "update": "datum.Key" },
+        { "events": "dblclick", "update": "null" }
       ]
     }
   ],
   "marks": [
     {
       "type": "rect",
-      "name": "zone",
-      "from": { "data": "zones" },
+      "name": "btn",
+      "from": { "data": "dataset" },
       "encode": {
         "enter": {
-          "x": { "field": "x" },
-          "y": { "field": "y" },
-          "width": { "field": "w" },
-          "height": { "field": "h" },
+          "x": { "signal": "10 + (datum.idx-1) * 140" },
+          "y": { "value": 10 },
+          "width": { "value": 130 },
+          "height": { "value": 70 },
           "cornerRadius": { "value": 10 },
           "strokeWidth": { "value": 2 },
           "cursor": { "value": "pointer" }
         },
         "update": {
           "fill": [
-            { "test": "selectedPart === datum.part", "value": "#1f77b4" },
+            { "test": "selected === datum.Key", "value": "#1f77b4" },
             { "value": "#e6e6e6" }
           ],
           "stroke": [
-            { "test": "selectedPart === datum.part", "value": "#1f77b4" },
+            { "test": "selected === datum.Key", "value": "#1f77b4" },
             { "value": "#666" }
           ]
         },
@@ -53,19 +55,19 @@
     },
     {
       "type": "text",
-      "from": { "data": "zones" },
+      "from": { "data": "dataset" },
       "encode": {
         "enter": {
-          "x": { "signal": "datum.x + datum.w/2" },
-          "y": { "signal": "datum.y + datum.h/2" },
+          "x": { "signal": "10 + (datum.idx-1) * 140 + 65" },
+          "y": { "value": 45 },
           "align": { "value": "center" },
           "baseline": { "value": "middle" },
-          "fontSize": { "value": 16 },
-          "text": { "field": "label" }
+          "fontSize": { "value": 16 }
         },
         "update": {
+          "text": { "signal": "isValid(datum.Label) ? datum.Label : datum.Key" },
           "fill": [
-            { "test": "selectedPart === datum.part", "value": "white" },
+            { "test": "selected === datum.Key", "value": "white" },
             { "value": "#111" }
           ]
         }
