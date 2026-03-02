@@ -6,13 +6,19 @@
 
   "data": [
     {
-      "name": "machine",
-      "transform": [
-        { "type": "aggregate", "fields": ["ImageURL"], "ops": ["max"], "as": ["ImageURL"] }
-      ]
+      "name": "dataset"
     },
     {
-      "name": "dataset"
+      "name": "machine",
+      "source": "dataset",
+      "transform": [
+        {
+          "type": "aggregate",
+          "fields": ["SelectedImageURL"],
+          "ops": ["max"],
+          "as": ["ImageURL"]
+        }
+      ]
     }
   ],
 
@@ -61,7 +67,7 @@
       "from": { "data": "dataset" },
       "encode": {
         "enter": {
-          "points": { "field": "Points" },
+          "points": { "signal": "fromJSON(datum.Points)" },
           "fill": { "value": null },
           "stroke": { "value": "#1f77b4" },
           "strokeWidth": { "value": 18 }
@@ -83,7 +89,7 @@
       "from": { "data": "dataset" },
       "encode": {
         "enter": {
-          "points": { "field": "Points" },
+          "points": { "signal": "fromJSON(datum.Points)" },
           "cursor": { "value": "pointer" },
           "stroke": { "value": "#666" },
           "strokeWidth": { "value": 2 }
@@ -98,6 +104,25 @@
             { "test": "datum.Key === hoverKey", "value": 0.18 },
             { "value": 0.05 }
           ]
+        }
+      }
+    },
+
+    /* Tooltip simple arriba a la izquierda */
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": { "value": 20 },
+          "y": { "value": 30 },
+          "font": { "value": "Segoe UI" },
+          "fontSize": { "value": 18 },
+          "fill": { "value": "#111" }
+        },
+        "update": {
+          "text": {
+            "signal": "hoverKey === null ? 'Pasá el cursor sobre una parte' : 'Parte: ' + datum.Title"
+          }
         }
       }
     }
