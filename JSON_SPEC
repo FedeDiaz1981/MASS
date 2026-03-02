@@ -1,130 +1,34 @@
-{
-  "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "width": 1200,
-  "height": 675,
-  "padding": 0,
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <!-- Background image (poné el nombre real del archivo) -->
+  <image href="machine.png" x="0" y="0" width="1200" height="675" preserveAspectRatio="xMidYMid slice" />
 
-  "data": [
-    {
-      "name": "dataset"
-    },
-    {
-      "name": "machine",
-      "source": "dataset",
-      "transform": [
-        {
-          "type": "aggregate",
-          "fields": ["SelectedImageURL"],
-          "ops": ["max"],
-          "as": ["ImageURL"]
-        }
-      ]
-    }
-  ],
+  <!-- === Botones (solo 3) === -->
+  <!-- Botón A -->
+  <g id="A" cursor="pointer">
+    <rect x="60" y="40" width="260" height="90" rx="18" ry="18" fill="#e6e6e6" stroke="#666" stroke-width="3"/>
+    <text x="190" y="95" text-anchor="middle" dominant-baseline="middle"
+          font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#111">
+      Motor (A)
+    </text>
+  </g>
 
-  "signals": [
-    {
-      "name": "selected",
-      "value": null,
-      "on": [
-        { "events": "@zone:click", "update": "datum.Key" },
-        { "events": "dblclick", "update": "null" }
-      ]
-    },
-    {
-      "name": "hoverKey",
-      "value": null,
-      "on": [
-        { "events": "@zone:mouseover", "update": "datum.Key" },
-        { "events": "@zone:mouseout", "update": "null" }
-      ]
-    }
-  ],
+  <!-- Botón B -->
+  <g id="B" cursor="pointer">
+    <rect x="340" y="40" width="260" height="90" rx="18" ry="18" fill="#e6e6e6" stroke="#666" stroke-width="3"/>
+    <text x="470" y="95" text-anchor="middle" dominant-baseline="middle"
+          font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#111">
+      Banda (B)
+    </text>
+  </g>
 
-  "marks": [
+  <!-- Botón C -->
+  <g id="C" cursor="pointer">
+    <rect x="620" y="40" width="260" height="90" rx="18" ry="18" fill="#e6e6e6" stroke="#666" stroke-width="3"/>
+    <text x="750" y="95" text-anchor="middle" dominant-baseline="middle"
+          font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#111">
+      Sensor (C)
+    </text>
+  </g>
 
-    /* Imagen de fondo */
-    {
-      "type": "image",
-      "from": { "data": "machine" },
-      "encode": {
-        "enter": {
-          "x": { "value": 0 },
-          "y": { "value": 0 },
-          "width": { "value": 1200 },
-          "height": { "value": 675 }
-        },
-        "update": {
-          "url": { "field": "ImageURL" }
-        }
-      }
-    },
-
-    /* Glow */
-    {
-      "type": "polygon",
-      "name": "zoneGlow",
-      "from": { "data": "dataset" },
-      "encode": {
-        "enter": {
-          "points": { "signal": "fromJSON(datum.Points)" },
-          "fill": { "value": null },
-          "stroke": { "value": "#1f77b4" },
-          "strokeWidth": { "value": 18 }
-        },
-        "update": {
-          "strokeOpacity": [
-            { "test": "datum.Key === selected", "value": 0.35 },
-            { "test": "datum.Key === hoverKey", "value": 0.25 },
-            { "value": 0 }
-          ]
-        }
-      }
-    },
-
-    /* Zona interactiva */
-    {
-      "type": "polygon",
-      "name": "zone",
-      "from": { "data": "dataset" },
-      "encode": {
-        "enter": {
-          "points": { "signal": "fromJSON(datum.Points)" },
-          "cursor": { "value": "pointer" },
-          "stroke": { "value": "#666" },
-          "strokeWidth": { "value": 2 }
-        },
-        "update": {
-          "fill": [
-            { "test": "datum.Key === selected", "value": "#1f77b4" },
-            { "value": "#000000" }
-          ],
-          "fillOpacity": [
-            { "test": "datum.Key === selected", "value": 0.25 },
-            { "test": "datum.Key === hoverKey", "value": 0.18 },
-            { "value": 0.05 }
-          ]
-        }
-      }
-    },
-
-    /* Tooltip simple arriba a la izquierda */
-    {
-      "type": "text",
-      "encode": {
-        "enter": {
-          "x": { "value": 20 },
-          "y": { "value": 30 },
-          "font": { "value": "Segoe UI" },
-          "fontSize": { "value": 18 },
-          "fill": { "value": "#111" }
-        },
-        "update": {
-          "text": {
-            "signal": "hoverKey === null ? 'Pasá el cursor sobre una parte' : 'Parte: ' + datum.Title"
-          }
-        }
-      }
-    }
-  ]
-}
+  <!-- Nota: la “clickeabilidad” real la maneja Deneb/Synoptic (mapeando por id o por campo Key) -->
+</svg>
