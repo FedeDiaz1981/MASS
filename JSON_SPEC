@@ -1,34 +1,77 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
-  <!-- Background image (poné el nombre real del archivo) -->
-  <image href="machine.png" x="0" y="0" width="1200" height="675" preserveAspectRatio="xMidYMid slice" />
-
-  <!-- === Botones (solo 3) === -->
-  <!-- Botón A -->
-  <g id="A" cursor="pointer">
-    <rect x="60" y="40" width="260" height="90" rx="18" ry="18" fill="#e6e6e6" stroke="#666" stroke-width="3"/>
-    <text x="190" y="95" text-anchor="middle" dominant-baseline="middle"
-          font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#111">
-      Motor (A)
-    </text>
-  </g>
-
-  <!-- Botón B -->
-  <g id="B" cursor="pointer">
-    <rect x="340" y="40" width="260" height="90" rx="18" ry="18" fill="#e6e6e6" stroke="#666" stroke-width="3"/>
-    <text x="470" y="95" text-anchor="middle" dominant-baseline="middle"
-          font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#111">
-      Banda (B)
-    </text>
-  </g>
-
-  <!-- Botón C -->
-  <g id="C" cursor="pointer">
-    <rect x="620" y="40" width="260" height="90" rx="18" ry="18" fill="#e6e6e6" stroke="#666" stroke-width="3"/>
-    <text x="750" y="95" text-anchor="middle" dominant-baseline="middle"
-          font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#111">
-      Sensor (C)
-    </text>
-  </g>
-
-  <!-- Nota: la “clickeabilidad” real la maneja Deneb/Synoptic (mapeando por id o por campo Key) -->
-</svg>
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "width": 420,
+  "height": 120,
+  "padding": 10,
+  "data": [
+    {
+      "name": "dataset",
+      "transform": [
+        {
+          "type": "window",
+          "ops": ["row_number"],
+          "as": ["idx"]
+        }
+      ]
+    }
+  ],
+  "signals": [
+    {
+      "name": "selected",
+      "value": null,
+      "on": [
+        { "events": "@btn:click", "update": "datum.Key" },
+        { "events": "dblclick", "update": "null" }
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "name": "btn",
+      "from": { "data": "dataset" },
+      "encode": {
+        "enter": {
+          "x": { "signal": "10 + (datum.idx-1) * 140" },
+          "y": { "value": 10 },
+          "width": { "value": 130 },
+          "height": { "value": 70 },
+          "cornerRadius": { "value": 10 },
+          "strokeWidth": { "value": 2 },
+          "cursor": { "value": "pointer" }
+        },
+        "update": {
+          "fill": [
+            { "test": "selected === datum.Key", "value": "#1f77b4" },
+            { "value": "#e6e6e6" }
+          ],
+          "stroke": [
+            { "test": "selected === datum.Key", "value": "#1f77b4" },
+            { "value": "#666" }
+          ]
+        },
+        "hover": { "fill": { "value": "#cfcfcf" } }
+      }
+    },
+    {
+      "type": "text",
+      "from": { "data": "dataset" },
+      "encode": {
+        "enter": {
+          "x": { "signal": "10 + (datum.idx-1) * 140 + 65" },
+          "y": { "value": 45 },
+          "align": { "value": "center" },
+          "baseline": { "value": "middle" },
+          "fontSize": { "value": 16 }
+        },
+        "update": {
+          "text": { "signal": "isValid(datum.Label) ? datum.Label : datum.Key" },
+          "fill": [
+            { "test": "selected === datum.Key", "value": "white" },
+            { "value": "#111" }
+          ]
+        }
+      }
+    }
+  ]
+}
