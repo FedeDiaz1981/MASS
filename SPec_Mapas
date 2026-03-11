@@ -23,8 +23,29 @@
       "source": "dataset",
       "transform": [
         {
+          "type": "filter",
+          "expr": "isValid(datum.Url) && datum.Url != ''"
+        },
+        {
           "type": "aggregate",
           "groupby": ["Url", "ancho", "alto"]
+        }
+      ]
+    },
+    {
+      "name": "botones",
+      "source": "dataset",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "isValid(datum.Boton) && datum.Boton != '' && isValid(datum.labelx) && isValid(datum.labely) && isValid(datum.pointx) && isValid(datum.pointy)"
+        },
+        {
+          "type": "collect",
+          "sort": {
+            "field": "order",
+            "order": "ascending"
+          }
         }
       ]
     }
@@ -48,7 +69,7 @@
 
     {
       "type": "rule",
-      "from": { "data": "dataset" },
+      "from": { "data": "botones" },
       "encode": {
         "enter": {
           "x": { "signal": "datum.labelx * width + defaultBtnWidth / 2" },
@@ -63,7 +84,7 @@
 
     {
       "type": "symbol",
-      "from": { "data": "dataset" },
+      "from": { "data": "botones" },
       "encode": {
         "enter": {
           "x": { "signal": "datum.pointx * width" },
@@ -78,7 +99,7 @@
 
     {
       "type": "rect",
-      "from": { "data": "dataset" },
+      "from": { "data": "botones" },
       "encode": {
         "enter": {
           "x": { "signal": "datum.labelx * width" },
@@ -90,11 +111,12 @@
           },
           "cornerRadius": { "value": 14 },
           "stroke": { "value": "#72D1FF" },
-          "strokeWidth": { "value": 1.5 }
+          "strokeWidth": { "value": 1.5 },
+          "cursor": { "value": "pointer" }
         },
         "update": {
           "tooltip": {
-            "signal": "{'Botón': datum.Title, 'Detalle': datum.tooltip}"
+            "signal": "{'Botón': datum.Boton, 'Detalle': datum.tooltip, 'Mapa': datum.nombreMapa}"
           }
         },
         "hover": {
@@ -106,12 +128,12 @@
 
     {
       "type": "text",
-      "from": { "data": "dataset" },
+      "from": { "data": "botones" },
       "encode": {
         "enter": {
           "x": { "signal": "datum.labelx * width + defaultBtnWidth / 2" },
           "y": { "signal": "datum.labely * height + defaultBtnHeight / 2" },
-          "text": { "field": "Title" },
+          "text": { "field": "Boton" },
           "align": { "value": "center" },
           "baseline": { "value": "middle" },
           "fill": { "value": "white" },
