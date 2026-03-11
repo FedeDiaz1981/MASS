@@ -11,7 +11,24 @@
 
   "signals": [
     { "name": "defaultBtnWidth", "value": 120 },
-    { "name": "defaultBtnHeight", "value": 30 }
+    { "name": "defaultBtnHeight", "value": 30 },
+
+    {
+      "name": "imgWidth",
+      "update": "data('mapa').length ? (data('mapa')[0].ancho / data('mapa')[0].alto > width / height ? width : height * data('mapa')[0].ancho / data('mapa')[0].alto) : width"
+    },
+    {
+      "name": "imgHeight",
+      "update": "data('mapa').length ? (data('mapa')[0].ancho / data('mapa')[0].alto > width / height ? width * data('mapa')[0].alto / data('mapa')[0].ancho : height) : height"
+    },
+    {
+      "name": "imgX",
+      "update": "(width - imgWidth) / 2"
+    },
+    {
+      "name": "imgY",
+      "update": "(height - imgHeight) / 2"
+    }
   ],
 
   "data": [
@@ -57,12 +74,11 @@
       "from": { "data": "mapa" },
       "encode": {
         "enter": {
-          "x": { "value": 0 },
-          "y": { "value": 0 },
-          "width": { "signal": "width" },
-          "height": { "signal": "height" },
-          "url": { "field": "Url" },
-          "aspect": { "value": true }
+          "x": { "signal": "imgX" },
+          "y": { "signal": "imgY" },
+          "width": { "signal": "imgWidth" },
+          "height": { "signal": "imgHeight" },
+          "url": { "field": "Url" }
         }
       }
     },
@@ -72,10 +88,10 @@
       "from": { "data": "botones" },
       "encode": {
         "enter": {
-          "x": { "signal": "datum.labelx * width + defaultBtnWidth / 2" },
-          "y": { "signal": "datum.labely * height + defaultBtnHeight / 2" },
-          "x2": { "signal": "datum.pointx * width" },
-          "y2": { "signal": "datum.pointy * height" },
+          "x": { "signal": "imgX + datum.labelx * imgWidth + defaultBtnWidth / 2" },
+          "y": { "signal": "imgY + datum.labely * imgHeight + defaultBtnHeight / 2" },
+          "x2": { "signal": "imgX + datum.pointx * imgWidth" },
+          "y2": { "signal": "imgY + datum.pointy * imgHeight" },
           "stroke": { "value": "#49B3FF" },
           "strokeWidth": { "value": 2 }
         }
@@ -87,8 +103,8 @@
       "from": { "data": "botones" },
       "encode": {
         "enter": {
-          "x": { "signal": "datum.pointx * width" },
-          "y": { "signal": "datum.pointy * height" },
+          "x": { "signal": "imgX + datum.pointx * imgWidth" },
+          "y": { "signal": "imgY + datum.pointy * imgHeight" },
           "size": { "value": 80 },
           "fill": { "value": "#A6ECFF" },
           "stroke": { "value": "#49B3FF" },
@@ -102,8 +118,8 @@
       "from": { "data": "botones" },
       "encode": {
         "enter": {
-          "x": { "signal": "datum.labelx * width" },
-          "y": { "signal": "datum.labely * height" },
+          "x": { "signal": "imgX + datum.labelx * imgWidth" },
+          "y": { "signal": "imgY + datum.labely * imgHeight" },
           "width": { "signal": "defaultBtnWidth" },
           "height": { "signal": "defaultBtnHeight" },
           "fill": {
@@ -131,8 +147,8 @@
       "from": { "data": "botones" },
       "encode": {
         "enter": {
-          "x": { "signal": "datum.labelx * width + defaultBtnWidth / 2" },
-          "y": { "signal": "datum.labely * height + defaultBtnHeight / 2" },
+          "x": { "signal": "imgX + datum.labelx * imgWidth + defaultBtnWidth / 2" },
+          "y": { "signal": "imgY + datum.labely * imgHeight + defaultBtnHeight / 2" },
           "text": { "field": "Boton" },
           "align": { "value": "center" },
           "baseline": { "value": "middle" },
