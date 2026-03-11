@@ -1,0 +1,4 @@
+"data:image/" &
+(if Text.Lower(Text.Replace([Extension], ".", "")) = "jpg" then "jpeg" else Text.Lower(Text.Replace([Extension], ".", ""))) &
+";base64," &
+Binary.ToText([Content], BinaryEncoding.Base64)
