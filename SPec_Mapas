@@ -1,34 +1,17 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "description": "Mapa técnico con imagen dinámica y botones",
+  "description": "Hotspots sobre imagen de fondo",
   "autosize": {
     "type": "fit",
     "contains": "padding"
   },
-  "padding": 0,
+
   "width": 900,
   "height": 550,
 
   "signals": [
     { "name": "defaultBtnWidth", "value": 120 },
-    { "name": "defaultBtnHeight", "value": 30 },
-
-    {
-      "name": "imgWidth",
-      "update": "width"
-    },
-    {
-      "name": "imgHeight",
-      "update": "height"
-    },
-    {
-      "name": "imgX",
-      "value": 0
-    },
-    {
-      "name": "imgY",
-      "value": 0
-    }
+    { "name": "defaultBtnHeight", "value": 30 }
   ],
 
   "data": [
@@ -36,38 +19,12 @@
       "name": "dataset"
     },
     {
-      "name": "mapa",
-      "source": "dataset",
-      "transform": [
-        {
-          "type": "filter",
-          "expr": "isValid(datum.Img64) && datum.Img64 != ''"
-        },
-        {
-          "type": "collect",
-          "sort": {
-            "field": "Title",
-            "order": "ascending"
-          }
-        },
-        {
-          "type": "window",
-          "ops": ["row_number"],
-          "as": ["rownum"]
-        },
-        {
-          "type": "filter",
-          "expr": "datum.rownum == 1"
-        }
-      ]
-    },
-    {
       "name": "botones",
       "source": "dataset",
       "transform": [
         {
           "type": "filter",
-          "expr": "isValid(datum.Boton) && datum.Boton != '' && isValid(datum.labelx) && isValid(datum.labely) && isValid(datum.pointx) && isValid(datum.pointy)"
+          "expr": "isValid(datum.Boton)"
         },
         {
           "type": "collect",
@@ -81,20 +38,6 @@
   ],
 
   "marks": [
-    {
-      "type": "image",
-      "from": { "data": "mapa" },
-      "encode": {
-        "enter": {
-          "x": { "signal": "imgX" },
-          "y": { "signal": "imgY" },
-          "width": { "signal": "imgWidth" },
-          "height": { "signal": "imgHeight" },
-          "url": { "field": "Img64" }
-        }
-      }
-    },
-
     {
       "type": "rule",
       "from": { "data": "botones" },
@@ -134,22 +77,14 @@
           "y": { "signal": "datum.labely * height" },
           "width": { "signal": "defaultBtnWidth" },
           "height": { "signal": "defaultBtnHeight" },
-          "fill": {
-            "signal": "isValid(datum.color) && datum.color != '' ? datum.color : '#2F80ED'"
-          },
-          "cornerRadius": { "value": 14 },
+          "fillOpacity": { "value": 0 },
           "stroke": { "value": "#72D1FF" },
-          "strokeWidth": { "value": 1.5 },
-          "cursor": { "value": "pointer" }
+          "strokeWidth": { "value": 2 }
         },
         "update": {
           "tooltip": {
-            "signal": "{'Botón': datum.Boton, 'Detalle': datum.tooltip, 'Mapa': datum.nombreMapa}"
+            "signal": "{'Botón': datum.Boton, 'Detalle': datum.tooltip}"
           }
-        },
-        "hover": {
-          "strokeWidth": { "value": 2.5 },
-          "fillOpacity": { "value": 0.9 }
         }
       }
     },
@@ -164,11 +99,9 @@
           "text": { "field": "Boton" },
           "align": { "value": "center" },
           "baseline": { "value": "middle" },
-          "fill": { "value": "white" },
+          "fill": { "value": "#2F80ED" },
           "fontSize": { "value": 12 },
-          "fontWeight": { "value": "bold" },
-          "limit": { "signal": "defaultBtnWidth - 16" },
-          "ellipsis": { "value": "..." }
+          "fontWeight": { "value": "bold" }
         }
       }
     }
