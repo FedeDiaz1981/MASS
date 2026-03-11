@@ -15,11 +15,11 @@
 
     {
       "name": "imgWidth",
-      "update": "data('mapa').length ? width : width"
+      "update": "width"
     },
     {
       "name": "imgHeight",
-      "update": "data('mapa').length ? height : height"
+      "update": "height"
     },
     {
       "name": "imgX",
@@ -44,8 +44,20 @@
           "expr": "isValid(datum.Img64) && datum.Img64 != ''"
         },
         {
-          "type": "limit",
-          "limit": 1
+          "type": "collect",
+          "sort": {
+            "field": "Title",
+            "order": "ascending"
+          }
+        },
+        {
+          "type": "window",
+          "ops": ["row_number"],
+          "as": ["rownum"]
+        },
+        {
+          "type": "filter",
+          "expr": "datum.rownum == 1"
         }
       ]
     },
@@ -74,10 +86,10 @@
       "from": { "data": "mapa" },
       "encode": {
         "enter": {
-          "x": { "value": 0 },
-          "y": { "value": 0 },
-          "width": { "signal": "width" },
-          "height": { "signal": "height" },
+          "x": { "signal": "imgX" },
+          "y": { "signal": "imgY" },
+          "width": { "signal": "imgWidth" },
+          "height": { "signal": "imgHeight" },
           "url": { "field": "Img64" }
         }
       }
@@ -127,12 +139,17 @@
           },
           "cornerRadius": { "value": 14 },
           "stroke": { "value": "#72D1FF" },
-          "strokeWidth": { "value": 1.5 }
+          "strokeWidth": { "value": 1.5 },
+          "cursor": { "value": "pointer" }
         },
         "update": {
           "tooltip": {
             "signal": "{'Botón': datum.Boton, 'Detalle': datum.tooltip, 'Mapa': datum.nombreMapa}"
           }
+        },
+        "hover": {
+          "strokeWidth": { "value": 2.5 },
+          "fillOpacity": { "value": 0.9 }
         }
       }
     },
@@ -149,7 +166,9 @@
           "baseline": { "value": "middle" },
           "fill": { "value": "white" },
           "fontSize": { "value": 12 },
-          "fontWeight": { "value": "bold" }
+          "fontWeight": { "value": "bold" },
+          "limit": { "signal": "defaultBtnWidth - 16" },
+          "ellipsis": { "value": "..." }
         }
       }
     }
