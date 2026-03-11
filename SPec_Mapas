@@ -15,11 +15,11 @@
 
     {
       "name": "imgWidth",
-      "update": "data('mapa').length ? (data('mapa')[0].ancho / data('mapa')[0].alto > width / height ? width : height * data('mapa')[0].ancho / data('mapa')[0].alto) : width"
+      "update": "data('mapa').length ? ((toNumber(data('mapa')[0].ancho) / toNumber(data('mapa')[0].alto)) > (width / height) ? width : height * toNumber(data('mapa')[0].ancho) / toNumber(data('mapa')[0].alto)) : width"
     },
     {
       "name": "imgHeight",
-      "update": "data('mapa').length ? (data('mapa')[0].ancho / data('mapa')[0].alto > width / height ? width * data('mapa')[0].alto / data('mapa')[0].ancho : height) : height"
+      "update": "data('mapa').length ? ((toNumber(data('mapa')[0].ancho) / toNumber(data('mapa')[0].alto)) > (width / height) ? width * toNumber(data('mapa')[0].alto) / toNumber(data('mapa')[0].ancho) : height) : height"
     },
     {
       "name": "imgX",
@@ -41,11 +41,11 @@
       "transform": [
         {
           "type": "filter",
-          "expr": "isValid(datum.Url) && datum.Url != ''"
+          "expr": "isValid(datum.Img64) && datum.Img64 != ''"
         },
         {
           "type": "aggregate",
-          "groupby": ["Url", "ancho", "alto"]
+          "groupby": ["Img64", "ancho", "alto"]
         }
       ]
     },
@@ -78,7 +78,7 @@
           "y": { "signal": "imgY" },
           "width": { "signal": "imgWidth" },
           "height": { "signal": "imgHeight" },
-          "url": { "field": "Url" }
+          "url": { "field": "Img64" }
         }
       }
     },
