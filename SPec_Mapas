@@ -1,0 +1,126 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Mapa técnico con imagen dinámica y botones",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "padding": 0,
+  "width": 900,
+  "height": 550,
+
+  "signals": [
+    { "name": "defaultBtnWidth", "value": 120 },
+    { "name": "defaultBtnHeight", "value": 30 }
+  ],
+
+  "data": [
+    {
+      "name": "dataset"
+    },
+    {
+      "name": "mapa",
+      "source": "dataset",
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": ["Url", "ancho", "alto"]
+        }
+      ]
+    }
+  ],
+
+  "marks": [
+    {
+      "type": "image",
+      "from": { "data": "mapa" },
+      "encode": {
+        "enter": {
+          "x": { "value": 0 },
+          "y": { "value": 0 },
+          "width": { "signal": "width" },
+          "height": { "signal": "height" },
+          "url": { "field": "Url" },
+          "aspect": { "value": true }
+        }
+      }
+    },
+
+    {
+      "type": "rule",
+      "from": { "data": "dataset" },
+      "encode": {
+        "enter": {
+          "x": { "signal": "datum.labelx * width + defaultBtnWidth / 2" },
+          "y": { "signal": "datum.labely * height + defaultBtnHeight / 2" },
+          "x2": { "signal": "datum.pointx * width" },
+          "y2": { "signal": "datum.pointy * height" },
+          "stroke": { "value": "#49B3FF" },
+          "strokeWidth": { "value": 2 }
+        }
+      }
+    },
+
+    {
+      "type": "symbol",
+      "from": { "data": "dataset" },
+      "encode": {
+        "enter": {
+          "x": { "signal": "datum.pointx * width" },
+          "y": { "signal": "datum.pointy * height" },
+          "size": { "value": 80 },
+          "fill": { "value": "#A6ECFF" },
+          "stroke": { "value": "#49B3FF" },
+          "strokeWidth": { "value": 2 }
+        }
+      }
+    },
+
+    {
+      "type": "rect",
+      "from": { "data": "dataset" },
+      "encode": {
+        "enter": {
+          "x": { "signal": "datum.labelx * width" },
+          "y": { "signal": "datum.labely * height" },
+          "width": { "signal": "defaultBtnWidth" },
+          "height": { "signal": "defaultBtnHeight" },
+          "fill": {
+            "signal": "isValid(datum.color) && datum.color != '' ? datum.color : '#2F80ED'"
+          },
+          "cornerRadius": { "value": 14 },
+          "stroke": { "value": "#72D1FF" },
+          "strokeWidth": { "value": 1.5 }
+        },
+        "update": {
+          "tooltip": {
+            "signal": "{'Botón': datum.Title, 'Detalle': datum.tooltip}"
+          }
+        },
+        "hover": {
+          "strokeWidth": { "value": 2.5 },
+          "fillOpacity": { "value": 0.9 }
+        }
+      }
+    },
+
+    {
+      "type": "text",
+      "from": { "data": "dataset" },
+      "encode": {
+        "enter": {
+          "x": { "signal": "datum.labelx * width + defaultBtnWidth / 2" },
+          "y": { "signal": "datum.labely * height + defaultBtnHeight / 2" },
+          "text": { "field": "Title" },
+          "align": { "value": "center" },
+          "baseline": { "value": "middle" },
+          "fill": { "value": "white" },
+          "fontSize": { "value": 12 },
+          "fontWeight": { "value": "bold" },
+          "limit": { "signal": "defaultBtnWidth - 16" },
+          "ellipsis": { "value": "..." }
+        }
+      }
+    }
+  ]
+}
