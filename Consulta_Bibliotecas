@@ -1,6 +1,6 @@
 let
-    Source = SharePoint.Contents("https://empresa.sharepoint.com/sites/Tecnico"),
-    Biblioteca = Source{[Name="Equipos"]}[Content],
+    Source = SharePoint.Contents("https://pmicloud.sharepoint.com/teams/OPLTIArgentina-DigitalWorkplace-Argentina"),
+    Biblioteca = Source{[Name="Documents"]}[Content],
     Archivos = Table.SelectRows(Biblioteca, each [Extension] <> null)
 in
     Archivos
