@@ -1,0 +1,6 @@
+let
+    Source = SharePoint.Contents("https://empresa.sharepoint.com/sites/Tecnico"),
+    Biblioteca = Source{[Name="Equipos"]}[Content],
+    Archivos = Table.SelectRows(Biblioteca, each [Extension] <> null)
+in
+    Archivos
