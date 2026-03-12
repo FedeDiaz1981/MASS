@@ -1,0 +1,183 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "background": null,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding",
+    "resize": true
+  },
+  "padding": 10,
+
+  "signals": [
+    { "name": "rowHeight", "value": 44 },
+    { "name": "itemSpacing", "value": 8 }
+  ],
+
+  "data": [
+    {
+      "name": "dataset"
+    },
+    {
+      "name": "items",
+      "source": "dataset",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "isValid(datum.Title)"
+        },
+        {
+          "type": "window",
+          "ops": ["row_number"],
+          "as": ["row"]
+        },
+        {
+          "type": "formula",
+          "as": "y",
+          "expr": "(datum.row-1) * (rowHeight + itemSpacing)"
+        }
+      ]
+    }
+  ],
+
+  "marks": [
+
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "text": { "value": "Tecnología" },
+          "x": { "value": 6 },
+          "y": { "value": -4 },
+          "fontSize": { "value": 14 },
+          "fontWeight": { "value": "bold" },
+          "fill": { "value": "#7C8898" }
+        }
+      }
+    },
+
+    {
+      "type": "rect",
+      "from": { "data": "items" },
+      "encode": {
+
+        "enter": {
+          "x": { "value": 0 },
+          "y": { "field": "y" },
+          "width": { "signal": "width" },
+          "height": { "signal": "rowHeight" },
+          "cornerRadius": { "value": 10 },
+          "cursor": { "value": "pointer" }
+        },
+
+        "update": {
+          "fill": [
+            {
+              "test": "datum.__selected__ === 'on'",
+              "value": "#5A9BD6"
+            },
+            { "value": "#E7E8EC" }
+          ],
+
+          "stroke": [
+            {
+              "test": "datum.__selected__ === 'on'",
+              "value": "#5A9BD6"
+            },
+            { "value": "transparent" }
+          ]
+        },
+
+        "hover": {
+          "fill": { "value": "#D5D7DE" }
+        }
+      }
+    },
+
+    {
+      "type": "symbol",
+      "from": { "data": "items" },
+      "encode": {
+
+        "enter": {
+          "shape": { "value": "square" },
+          "size": { "value": 140 },
+          "x": { "value": 24 },
+          "y": { "signal": "datum.y + rowHeight/2" },
+          "fill": { "value": "#7C8898" }
+        },
+
+        "update": {
+          "fill": [
+            {
+              "test": "datum.__selected__ === 'on'",
+              "value": "white"
+            },
+            { "value": "#7C8898" }
+          ]
+        }
+      }
+    },
+
+    {
+      "type": "text",
+      "from": { "data": "items" },
+      "encode": {
+
+        "enter": {
+          "x": { "value": 48 },
+          "y": { "signal": "datum.y + rowHeight/2" },
+          "text": { "field": "Title" },
+          "align": { "value": "left" },
+          "baseline": { "value": "middle" },
+          "fontSize": { "value": 13 }
+        },
+
+        "update": {
+          "fill": [
+            {
+              "test": "datum.__selected__ === 'on'",
+              "value": "white"
+            },
+            { "value": "#4B5563" }
+          ],
+
+          "fontWeight": [
+            {
+              "test": "datum.__selected__ === 'on'",
+              "value": "bold"
+            },
+            { "value": "normal" }
+          ]
+        }
+      }
+    },
+
+    {
+      "type": "text",
+      "from": { "data": "items" },
+      "encode": {
+
+        "enter": {
+          "text": { "value": "›" },
+          "x": { "signal": "width - 18" },
+          "y": { "signal": "datum.y + rowHeight/2" },
+          "align": { "value": "center" },
+          "baseline": { "value": "middle" },
+          "fontSize": { "value": 18 },
+          "fill": { "value": "#8A94A6" }
+        },
+
+        "update": {
+          "fill": [
+            {
+              "test": "datum.__selected__ === 'on'",
+              "value": "white"
+            },
+            { "value": "#8A94A6" }
+          ]
+        }
+      }
+    }
+
+  ]
+}
