@@ -1,0 +1,205 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "background": null,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding",
+    "resize": true
+  },
+  "padding": 8,
+
+  "signals": [
+    { "name": "headerHeight", "value": 34 },
+    { "name": "rowHeight", "value": 42 },
+    { "name": "rowGap", "value": 8 }
+  ],
+
+  "data": [
+    {
+      "name": "dataset"
+    },
+    {
+      "name": "docs_by_type",
+      "source": "dataset",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "isValid(datum['Attributes.FormatoDeArchivo.Value']) && datum['Attributes.FormatoDeArchivo.Value'] != ''"
+        },
+        {
+          "type": "aggregate",
+          "groupby": ["Attributes.FormatoDeArchivo.Value"],
+          "ops": ["count"],
+          "as": ["Cantidad"]
+        },
+        {
+          "type": "formula",
+          "as": "TipoDoc",
+          "expr": "datum['Attributes.FormatoDeArchivo.Value']"
+        },
+        {
+          "type": "formula",
+          "as": "Orden",
+          "expr": "datum.TipoDoc === 'OPCL' ? 1 : datum.TipoDoc === 'TL' ? 2 : datum.TipoDoc === 'SIMPTWW' ? 3 : datum.TipoDoc === 'Videos' ? 4 : datum.TipoDoc === 'Manuales' ? 5 : datum.TipoDoc === 'Cursos' ? 6 : 99"
+        },
+        {
+          "type": "collect",
+          "sort": {
+            "field": ["Orden", "TipoDoc"],
+            "order": ["ascending", "ascending"]
+          }
+        },
+        {
+          "type": "window",
+          "ops": ["row_number"],
+          "as": ["rownum"]
+        },
+        {
+          "type": "formula",
+          "as": "y",
+          "expr": "headerHeight + (datum.rownum - 1) * (rowHeight + rowGap)"
+        }
+      ]
+    }
+  ],
+
+  "marks": [
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": { "value": 4 },
+          "y": { "value": 20 },
+          "text": { "value": "Documentación Relacionada" },
+          "fontSize": { "value": 14 },
+          "fontWeight": { "value": "bold" },
+          "fill": { "value": "#6E7B8F" }
+        }
+      }
+    },
+
+    {
+      "name": "docRow",
+      "type": "rect",
+      "from": { "data": "docs_by_type" },
+      "encode": {
+        "enter": {
+          "x": { "value": 0 },
+          "y": { "field": "y" },
+          "width": { "signal": "width" },
+          "height": { "signal": "rowHeight" },
+          "cornerRadius": { "value": 6 },
+          "cursor": { "value": "pointer" }
+        },
+        "update": {
+          "fill": [
+            {
+              "test": "datum.__selected__ === 'on'",
+              "value": "#D9E8F8"
+            },
+            { "value": "#F3F4F7" }
+          ],
+          "stroke": [
+            {
+              "test": "datum.__selected__ === 'on'",
+              "value": "#8FBCEB"
+            },
+            { "value": "#E5E8EF" }
+          ],
+          "strokeWidth": { "value": 1 }
+        },
+        "hover": {
+          "fill": { "value": "#EAEFF7" }
+        }
+      }
+    },
+
+    {
+      "type": "rect",
+      "from": { "data": "docs_by_type" },
+      "encode": {
+        "enter": {
+          "x": { "value": 10 },
+          "y": { "signal": "datum.y + 10" },
+          "width": { "value": 16 },
+          "height": { "value": 12 },
+          "fill": { "value": "#F3C74A" },
+          "stroke": { "value": "#D8AE2F" },
+          "strokeWidth": { "value": 1 },
+          "cornerRadius": { "value": 1 }
+        }
+      }
+    },
+
+    {
+      "type": "path",
+      "from": { "data": "docs_by_type" },
+      "encode": {
+        "enter": {
+          "path": { "value": "M 22 10 L 26 10 L 26 14" },
+          "x": { "value": 0 },
+          "y": { "field": "y" },
+          "stroke": { "value": "#D8AE2F" },
+          "strokeWidth": { "value": 1.2 }
+        }
+      }
+    },
+
+    {
+      "type": "text",
+      "from": { "data": "docs_by_type" },
+      "encode": {
+        "enter": {
+          "x": { "value": 34 },
+          "y": { "signal": "datum.y + rowHeight / 2 + 1" },
+          "text": { "field": "TipoDoc" },
+          "align": { "value": "left" },
+          "baseline": { "value": "middle" },
+          "fontSize": { "value": 12.5 },
+          "fill": { "value": "#5E6A7D" }
+        },
+        "update": {
+          "fontWeight": [
+            {
+              "test": "datum.__selected__ === 'on'",
+              "value": "bold"
+            },
+            { "value": "normal" }
+          ]
+        }
+      }
+    },
+
+    {
+      "type": "rule",
+      "from": { "data": "docs_by_type" },
+      "encode": {
+        "enter": {
+          "x": { "signal": "width - 42" },
+          "x2": { "signal": "width - 42" },
+          "y": { "signal": "datum.y + 10" },
+          "y2": { "signal": "datum.y + rowHeight - 10" },
+          "stroke": { "value": "#D5DAE4" },
+          "strokeWidth": { "value": 1 }
+        }
+      }
+    },
+
+    {
+      "type": "text",
+      "from": { "data": "docs_by_type" },
+      "encode": {
+        "enter": {
+          "x": { "signal": "width - 20" },
+          "y": { "signal": "datum.y + rowHeight / 2 + 1" },
+          "text": { "field": "Cantidad" },
+          "align": { "value": "right" },
+          "baseline": { "value": "middle" },
+          "fontSize": { "value": 12.5 },
+          "fontWeight": { "value": "bold" },
+          "fill": { "value": "#6A768A" }
+        }
+      }
+    }
+  ]
+}
